@@ -6,11 +6,13 @@ namespace ThingsToReturn.Data
 {
     public class ThingsContext : IdentityDbContext
     {
-        public ThingsContext(DbContextOptions<ThingsContext> options) : base(options)
-        {
-        }
-        public DbSet<Offer> Offers { get; set; }
+        public ThingsContext(DbContextOptions<ThingsContext> options) : base(options) { }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Offer> Offers { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<OfferCategory> OfferCategories { get; set; }
+        public DbSet<AppUserOffer> AppUserOffer { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -44,5 +46,6 @@ namespace ThingsToReturn.Data
             .WithMany(g => g.OfferCategories)
             .HasForeignKey(g => g.CategoryId);
         }
+
     }
 }
