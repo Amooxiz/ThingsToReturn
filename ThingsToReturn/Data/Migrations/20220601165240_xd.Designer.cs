@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThingsToReturn.Data;
 
 #nullable disable
 
-namespace ThingsToReturn.Migrations
+namespace ThingsToReturn.Data.Migrations
 {
     [DbContext(typeof(ThingsContext))]
-    partial class ThingsContextModelSnapshot : ModelSnapshot
+    [Migration("20220601165240_xd")]
+    partial class xd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -415,13 +417,13 @@ namespace ThingsToReturn.Migrations
                     b.HasOne("ThingsToReturn.Models.AppUser", "AppUser")
                         .WithMany("AppUserOffers")
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("ThingsToReturn.Models.Offer", "Offer")
                         .WithMany("AppUserOffers")
                         .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("AppUser");
@@ -451,13 +453,13 @@ namespace ThingsToReturn.Migrations
                     b.HasOne("ThingsToReturn.Models.Category", "Category")
                         .WithMany("OfferCategories")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("ThingsToReturn.Models.Offer", "Offer")
                         .WithMany("OfferCategories")
                         .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Category");

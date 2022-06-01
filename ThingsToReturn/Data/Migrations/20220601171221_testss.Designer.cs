@@ -9,11 +9,11 @@ using ThingsToReturn.Data;
 
 #nullable disable
 
-namespace ThingsToReturn.Migrations
+namespace ThingsToReturn.Data.Migrations
 {
     [DbContext(typeof(ThingsContext))]
-    [Migration("20220531160907_identity")]
-    partial class identity
+    [Migration("20220601171221_testss")]
+    partial class testss
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -417,13 +417,13 @@ namespace ThingsToReturn.Migrations
                     b.HasOne("ThingsToReturn.Models.AppUser", "AppUser")
                         .WithMany("AppUserOffers")
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("ThingsToReturn.Models.Offer", "Offer")
                         .WithMany("AppUserOffers")
                         .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("AppUser");

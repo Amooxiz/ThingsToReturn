@@ -11,7 +11,7 @@ builder.Services.AddDbContext<ThingsContext>(options =>
     options.UseSqlServer(connectionString));;
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ThingsContext>().AddDefaultUI().AddDefaultTokenProviders();;
+    .AddEntityFrameworkStores<ThingsContext>().AddDefaultUI().AddDefaultTokenProviders();
 
 // Add services to the container.
 //builder.Services.AddDbContext<ThingsContext>(options =>
