@@ -4,30 +4,58 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
-
-<div class="row">
+<div class="row" style="margin-top: 10px">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
+            <h3>Create a new account.</h3>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                <input asp-for="Input.Email" class="form-control"  aria-required="true" />
                 <label asp-for="Input.Email"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+            <div class="form-floating" style="margin-top: 10px">
+                <input asp-for="Input.Password" class="form-control"  aria-required="true" />
                 <label asp-for="Input.Password"></label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
-            <div class="form-floating">
+            <div class="form-floating" style="margin-top: 10px">
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <div class="form-floating" style="margin-top: 10px">
+                <input asp-for="Address.Country" class="form-control"  aria-required="true" />
+                <label asp-for="Address.Country"></label>
+                <span asp-validation-for="Address.Country" class="text-danger"></span>
+            </div>
+            <div class="form-floating" style="margin-top: 10px">
+                <input asp-for="Address.City" class="form-control" aria-required="true" />
+                <label asp-for="Address.City"></label>
+                <span asp-validation-for="Address.City" class="text-danger"></span>
+            </div>
+            <div class="form-floating" style="margin-top: 10px">
+                <input asp-for="Address.ZipCode" class="form-control"  aria-required="true" />
+                <label asp-for="Address.ZipCode"></label>
+                <span asp-validation-for="Address.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-floating" style="margin-top: 10px">
+                <input asp-for="Address.Street" class="form-control"  aria-required="true" />
+                <label asp-for="Address.Street"></label>
+                <span asp-validation-for="Address.Street" class="text-danger"></span>
+            </div>
+            <div class="form-floating" style="margin-top: 10px">
+                <input asp-for="Address.BuildingNr" class="form-control"  aria-required="true" />
+                <label asp-for="Address.BuildingNr"></label>
+                <span asp-validation-for="Address.BuildingNr" class="text-danger"></span>
+            </div>
+            <div class="form-floating" style="margin-top: 10px">
+                <input asp-for="Address.ApartmentNr" class="form-control" aria-required="true" />
+                <label asp-for="Address.ApartmentNr"></label>
+                <span asp-validation-for="Address.ApartmentNr" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary"  style="margin-top: 10px">Register</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
