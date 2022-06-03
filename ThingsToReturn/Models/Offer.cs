@@ -14,6 +14,7 @@ namespace ThingsToReturn.Models
         public AppUser User { get; set; }
         public ICollection<AppUserOffer>? AppUserOffers { get; set; }
         public ICollection<OfferCategory>? OfferCategories { get; set; }
+        
         public int? BookingId { get; set; }
 
     }
