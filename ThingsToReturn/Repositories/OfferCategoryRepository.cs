@@ -2,10 +2,10 @@
 
 namespace ThingsToReturn.Repositories
 {
-    public class AddressRepository : IAddressRepository
+    public class OfferCategoryRepository : IOfferCategoryRepository
     {
         private readonly ThingsContext _context;
-        public AddressRepository(ThingsContext context)
+        public OfferCategoryRepository(ThingsContext context)
         {
             _context = context;
         }
