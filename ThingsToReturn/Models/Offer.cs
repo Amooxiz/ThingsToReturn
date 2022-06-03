@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace ThingsToReturn.Models
+﻿namespace ThingsToReturn.Models
 {
     public class Offer
     {

@@ -1,11 +1,10 @@
 ﻿using ThingsToReturn.Data;
-
 namespace ThingsToReturn.Repositories
 {
-    public class AddressRepository : IAddressRepository
+    public class AppUserOfferRepository : IAppUserOfferRepository
     {
         private readonly ThingsContext _context;
-        public AddressRepository(ThingsContext context)
+        public AppUserOfferRepository(ThingsContext context)
         {
             _context = context;
         }

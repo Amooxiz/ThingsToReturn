@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ThingsToReturn.ViewModels
+﻿namespace ThingsToReturn.ViewModels
 {
     public class AddressVM
     {
