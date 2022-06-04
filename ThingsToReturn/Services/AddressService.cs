@@ -1,6 +1,4 @@
-﻿using ThingsToReturn.Interfaces;
-
-namespace ThingsToReturn.Services
+﻿namespace ThingsToReturn.Services
 {
     public class AddressService : IAddressService
     {
