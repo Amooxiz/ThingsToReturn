@@ -12,8 +12,8 @@ using ThingsToReturn.Data;
 namespace ThingsToReturn.Data.Migrations
 {
     [DbContext(typeof(ThingsContext))]
-    [Migration("20220601172009_cycleFree")]
-    partial class cycleFree
+    [Migration("20220604145527_offerChanges")]
+    partial class offerChanges
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -309,11 +309,14 @@ namespace ThingsToReturn.Data.Migrations
                     b.Property<int?>("BookingId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("Date");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ExpirationDate")
-                        .HasColumnType("Date");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
