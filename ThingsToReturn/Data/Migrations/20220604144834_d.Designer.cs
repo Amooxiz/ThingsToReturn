@@ -12,8 +12,8 @@ using ThingsToReturn.Data;
 namespace ThingsToReturn.Data.Migrations
 {
     [DbContext(typeof(ThingsContext))]
-    [Migration("20220601172009_cycleFree")]
-    partial class cycleFree
+    [Migration("20220604144834_d")]
+    partial class d
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -230,32 +230,28 @@ namespace ThingsToReturn.Data.Migrations
 
             modelBuilder.Entity("ThingsToReturn.Models.Address", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
 
-                    b.Property<int>("ApartmentNr")
+                    b.Property<int?>("ApartmentNr")
                         .HasColumnType("int");
 
-                    b.Property<int>("BuildingNr")
+                    b.Property<int?>("BuildingNr")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Street")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ZipCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

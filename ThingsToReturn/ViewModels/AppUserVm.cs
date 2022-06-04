@@ -1,6 +1,5 @@
-﻿namespace ThingsToReturn.ViewModels
+﻿namespace ThingsToReturn.ViewModels;
+
+public class AppUserVm
 {
-    public class AppUserVm
-    {
-    }
 }

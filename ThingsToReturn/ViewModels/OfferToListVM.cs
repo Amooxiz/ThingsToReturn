@@ -1,8 +1,7 @@
-﻿namespace ThingsToReturn.ViewModels
+﻿namespace ThingsToReturn.ViewModels;
+
+public class OfferToListVM
 {
-    public class OfferToListVM
-    {
-        public List<OfferVM> Offers { get; set; }
-        public int Count { get; set; }
-    }
+    public List<OfferVM> Offers { get; set; }
+    public int Count { get; set; }
 }

@@ -114,7 +114,18 @@ namespace ThingsToReturn.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+                if (AddressNull())
+                    Address = null;
+
+                else if (!AddressCorrect())
+                {
+                    ModelState.AddModelError(String.Empty, "Fill all optional fields or leave them empty");
+                    return Page();
+                }
+
+
                 var user = CreateUser();
+
                 user.Address = Address;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
@@ -178,6 +189,24 @@ namespace ThingsToReturn.Areas.Identity.Pages.Account
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
             return (IUserEmailStore<AppUser>)_userStore;
+        }
+        private bool AddressCorrect()
+        {
+            if (Address.Country != null && Address.ZipCode != null && Address.City != null && Address.Street != null &&
+                Address.BuildingNr != null && Address.ApartmentNr != null)
+                return true;
+
+            else return false;
+
+            
+        }
+        private bool AddressNull()
+        {
+            if(Address.Country == null && Address.ZipCode == null && Address.City == null && Address.Street == null &&
+               Address.BuildingNr == null && Address.ApartmentNr == null)
+                return true;
+
+            else return false;
         }
     }
 }
