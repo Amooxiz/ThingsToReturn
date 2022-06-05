@@ -1,4 +1,6 @@
-﻿namespace ThingsToReturn.Services
+﻿using ThingsToReturn.Extension;
+
+namespace ThingsToReturn.Services
 {
     public class CategoryService : ICategoryService
     {
@@ -10,7 +12,13 @@
 
         public CategoryToListVM GetAllCategories()
         {
-            throw new NotImplementedException();
+            var categories = _categoryRepository.GetAllCategories().ToModel();
+            var result = new CategoryToListVM();
+            
+            result.Categories = categories.ToList();
+            result.Count = result.Categories.Count;
+
+            return result;
         }
 
         public void AddCategory(Category category)

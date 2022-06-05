@@ -25,4 +25,22 @@ public static class Extender
         }) ;
             
     }
+    public static IQueryable<CategoryVM> ToModel(this IQueryable<OfferCategory> offcategories)
+    {
+        return offcategories.Select(c => new CategoryVM
+        {
+            Name = c.Category.Name
+        });
+    }
+
+    public static IQueryable<OfferVM> ToModel(this IQueryable<Offer> offers)
+    {
+        return offers.Select(o => new OfferVM
+        {
+            Description = o.Description,
+            ExpirationDate = o.ExpirationDate,
+            Name = o.Name,
+            ImagePath = o.ImagePath,
+        });
+    }
 }

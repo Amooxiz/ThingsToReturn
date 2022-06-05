@@ -2,5 +2,6 @@
 {
     public interface IOfferCategoryRepository
     {
+        public IQueryable<OfferCategory> GetCategoriesOfOffer(int offerId);
     }
 }

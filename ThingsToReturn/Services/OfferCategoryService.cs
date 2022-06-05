@@ -1,4 +1,6 @@
-﻿namespace ThingsToReturn.Services
+﻿using ThingsToReturn.Extension;
+
+namespace ThingsToReturn.Services
 {
     public class OfferCategoryService : IOfferCategoryService
     {
@@ -7,5 +9,19 @@
         {
             _offerCategoryRepository = offerCategoryRepository;
         }
+
+        public CategoryToListVM GetCategoriesOfOffer(int offerId)
+        {
+            var categories1 = _offerCategoryRepository.GetCategoriesOfOffer(offerId);
+            var categories = categories1.ToModel();
+
+            var result = new CategoryToListVM();
+            result.Categories = categories.ToList();
+            result.Count = result.Categories.Count();
+
+            return result;
+
+        }
+
     }
 }

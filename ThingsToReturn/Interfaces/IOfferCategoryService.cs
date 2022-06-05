@@ -2,5 +2,6 @@
 {
     public interface IOfferCategoryService
     {
+        public CategoryToListVM GetCategoriesOfOffer(int offerId);
     }
 }

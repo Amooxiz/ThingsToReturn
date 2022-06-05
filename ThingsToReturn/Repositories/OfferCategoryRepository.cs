@@ -9,5 +9,12 @@ namespace ThingsToReturn.Repositories
         {
             _context = context;
         }
+
+        public IQueryable<OfferCategory> GetCategoriesOfOffer(int offerId)
+        {
+            return from offcat in _context.OfferCategories
+                   where offcat.OfferId == offerId
+                   select offcat;
+        }
     }
 }

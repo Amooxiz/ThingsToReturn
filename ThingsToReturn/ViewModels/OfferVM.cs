@@ -8,5 +8,6 @@ public class OfferVM
     public DateTime ExpirationDate { get; set; }
     public AddressVM AddressVM { get; set; }
     public AppUserVm UserVM { get; set; } 
-    public bool IsReservation { get; set; }
+    public CategoryToListVM CategoryListVM { get; set; }
+    public bool IsReservated { get; set; }
 }
