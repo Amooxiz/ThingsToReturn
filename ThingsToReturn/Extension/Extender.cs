@@ -17,4 +17,12 @@ public static class Extender
 
         });
     }
+    public static IQueryable<CategoryVM> ToModel(this IQueryable<Category> categories)
+    {
+        return categories.Select(c => new CategoryVM
+        {
+            Name = c.Name
+        }) ;
+            
+    }
 }
