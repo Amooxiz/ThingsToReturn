@@ -1,4 +1,5 @@
-﻿using ThingsToReturn.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ThingsToReturn.Data;
 
 namespace ThingsToReturn.Repositories
 {
@@ -12,7 +13,7 @@ namespace ThingsToReturn.Repositories
 
         public IQueryable<Offer> GetAllOffers()
         {
-            return _context.Offers;
+            return _context.Offers.Include(o => o.OfferCategories);
         }
 
         public void AddOffer(Offer offer)

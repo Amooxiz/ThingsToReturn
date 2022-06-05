@@ -5,12 +5,10 @@ namespace ThingsToReturn.Services
     public class OfferService : IOfferService
     {
         private readonly IOfferRepository _offerRepository;
-        private readonly IOfferCategoryService _offcatservice;
 
-        public OfferService(IOfferRepository offerRepository, IOfferCategoryService offcatservice)
+        public OfferService(IOfferRepository offerRepository)
         {
             _offerRepository = offerRepository;
-            _offcatservice = offcatservice;
         }
 
         public OfferToListVM GetAllOffers()
@@ -18,6 +16,11 @@ namespace ThingsToReturn.Services
             var offers = _offerRepository.GetAllOffers();
             var offersmodel = offers.ToModel();
 
+            var result = new OfferToListVM
+            {
+                Offers = offersmodel.ToList()
+            };
+            return result;
 
         }
 

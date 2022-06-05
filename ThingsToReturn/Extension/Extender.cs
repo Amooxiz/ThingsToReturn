@@ -37,10 +37,11 @@ public static class Extender
     {
         return offers.Select(o => new OfferVM
         {
+            Name = o.Name,
             Description = o.Description,
             ExpirationDate = o.ExpirationDate,
-            Name = o.Name,
             ImagePath = o.ImagePath,
-        });
+            UserVM = new AppUserVm { UserName = o.User.UserName },
+        }) ;
     }
 }
