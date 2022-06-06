@@ -5,10 +5,7 @@ namespace ThingsToReturn.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
-        public CategoryService(ICategoryRepository categoryRepository)
-        {
-            _categoryRepository = categoryRepository;
-        }
+        public CategoryService(ICategoryRepository categoryRepository) => _categoryRepository = categoryRepository;
 
         public CategoryToListVM GetAllCategories()
         {
@@ -21,9 +18,6 @@ namespace ThingsToReturn.Services
             return result;
         }
 
-        public void AddCategory(Category category)
-        {
-            _categoryRepository.AddCategory(category);
-        }
+        public void AddCategory(Category category) => _categoryRepository.AddCategory(category);
     }
 }
