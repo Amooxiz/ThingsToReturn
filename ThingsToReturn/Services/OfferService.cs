@@ -20,6 +20,9 @@ namespace ThingsToReturn.Services
             {
                 Offers = offersmodel.ToList()
             };
+            result.Count = result.Offers.Count;
+
+
             return result;
 
         }
