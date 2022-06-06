@@ -40,21 +40,23 @@ public static class Extender
     {
         return offers.Select(o => new OfferVM
         {
+            
             Name = o.Name,
             Description = o.Description,
             ExpirationDate = o.ExpirationDate,
             ImagePath = o.ImagePath,
             UserVM = new AppUserVm { UserName = o.User.UserName },
             CreationDate = o.CreatedDate,
-            AddressVM = new AddressVM 
-            { 
+            AddressVM = new AddressVM
+            {
                 Country = o.Address.Country,
                 ApartmentNr = o.Address.ApartmentNr,
-                BuildingNr = o.Address.BuildingNr, 
+                BuildingNr = o.Address.BuildingNr,
                 City = o.Address.City,
                 Street = o.Address.Street,
                 ZipCode = o.Address.ZipCode
             },
+            
         });
     }
 }
