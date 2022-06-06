@@ -20,10 +20,5 @@ namespace ThingsToReturn.Services
 
             return result;
         }
-
-        public void AddCategory(Category category)
-        {
-            _categoryRepository.AddCategory(category);
-        }
     }
 }

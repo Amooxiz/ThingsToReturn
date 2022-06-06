@@ -14,12 +14,6 @@ namespace ThingsToReturn.Repositories
         {
             return _context.Categories;
         }
-
-        public void AddCategory(Category category)
-        {
-            _context.Categories.Add(category);
-            _context.SaveChanges();
-        }
         /*
             ░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░
 ░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░
