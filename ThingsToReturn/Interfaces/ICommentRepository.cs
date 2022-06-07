@@ -2,5 +2,6 @@
 {
     public interface ICommentRepository
     {
+        public IQueryable<Comment> GetReceiverComments(string receiverId);
     }
 }
