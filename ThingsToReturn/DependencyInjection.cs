@@ -26,6 +26,9 @@ namespace ThingsToReturn
             services.AddTransient<IAddressService, AddressService>();
             services.AddTransient<IAddressRepository, AddressRepository>();
 
+            services.AddTransient<ICommentService, CommentService>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
+
             return services;
         }
     }
