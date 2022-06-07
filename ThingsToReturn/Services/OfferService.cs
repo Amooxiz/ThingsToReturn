@@ -5,26 +5,35 @@ namespace ThingsToReturn.Services
     public class OfferService : IOfferService
     {
         private readonly IOfferRepository _offerRepository;
-           
-        public OfferService(IOfferRepository offerRepository)
+        private readonly IOfferCategoryRepository _offerCategoryRepository;
+
+        public OfferService(IOfferRepository offerRepository, IOfferCategoryRepository offerCategoryRepository)
         {
             _offerRepository = offerRepository;
+            _offerCategoryRepository = offerCategoryRepository;
         }
 
         public OfferToListVM GetAllOffers()
         {
-            var offers = _offerRepository.GetAllOffers();
-            var offersmodel = offers.ToModel();
+            var offers = _offerRepository.GetAllOffers().ToModel();
+
+            var offersList = offers.ToList();
+
+            for (int i = 0; i < offersList.Count; i ++)
+            {
+                offersList[i].CategoryListVM.Categories = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel()
+                    .ToList();
+            }
 
             var result = new OfferToListVM
             {
-                Offers = offersmodel.ToList()
+                Offers = offersList
             };
             result.Count = result.Offers.Count;
 
-
             return result;
-
         }
 
         public void AddOffer(Offer offer)

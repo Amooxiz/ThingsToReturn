@@ -40,7 +40,7 @@ public static class Extender
     {
         return offers.Select(o => new OfferVM
         {
-            
+            Id = o.Id,
             Name = o.Name,
             Description = o.Description,
             ExpirationDate = o.ExpirationDate,
