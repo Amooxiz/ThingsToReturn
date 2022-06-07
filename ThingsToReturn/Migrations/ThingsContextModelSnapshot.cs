@@ -289,6 +289,38 @@ namespace ThingsToReturn.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("ThingsToReturn.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CommentReceiverId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CommentSenderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentReceiverId");
+
+                    b.HasIndex("CommentSenderId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("ThingsToReturn.Models.Offer", b =>
                 {
                     b.Property<int>("Id")
@@ -428,6 +460,25 @@ namespace ThingsToReturn.Migrations
                     b.Navigation("Offer");
                 });
 
+            modelBuilder.Entity("ThingsToReturn.Models.Comment", b =>
+                {
+                    b.HasOne("ThingsToReturn.Models.AppUser", "CommentReceiver")
+                        .WithMany("CommentsReceived")
+                        .HasForeignKey("CommentReceiverId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ThingsToReturn.Models.AppUser", "CommentSender")
+                        .WithMany("CommentsSend")
+                        .HasForeignKey("CommentSenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CommentReceiver");
+
+                    b.Navigation("CommentSender");
+                });
+
             modelBuilder.Entity("ThingsToReturn.Models.Offer", b =>
                 {
                     b.HasOne("ThingsToReturn.Models.Address", "Address")
@@ -488,6 +539,10 @@ namespace ThingsToReturn.Migrations
             modelBuilder.Entity("ThingsToReturn.Models.AppUser", b =>
                 {
                     b.Navigation("AppUserOffers");
+
+                    b.Navigation("CommentsReceived");
+
+                    b.Navigation("CommentsSend");
 
                     b.Navigation("MyOffers");
                 });

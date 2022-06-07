@@ -13,6 +13,7 @@ namespace ThingsToReturn.Data
         public DbSet<Address> Address { get; set; }
         public DbSet<OfferCategory> OfferCategories { get; set; }
         public DbSet<AppUserOffer> AppUserOffer { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -45,6 +46,16 @@ namespace ThingsToReturn.Data
             .HasOne<Category>(pg => pg.Category)
             .WithMany(g => g.OfferCategories)
             .HasForeignKey(g => g.CategoryId).OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Comment>()
+                .HasOne(x => x.CommentReceiver)
+                .WithMany(x => x.CommentsReceived)
+                .HasForeignKey(x => x.CommentReceiverId);
+
+            builder.Entity<Comment>()
+                .HasOne(x => x.CommentSender)
+                .WithMany(x => x.CommentsSend)
+                .HasForeignKey(x =>x.CommentSenderId);
         }
 
     }
