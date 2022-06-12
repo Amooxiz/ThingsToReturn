@@ -19,9 +19,55 @@ namespace ThingsToReturn.Repositories
             _context.SaveChanges();
         }
 
-        public IQueryable<Offer> FiltrateOffers(string offerName, int categoryId, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
+        public IQueryable<Offer> FiltrateOffersByName(string offerName, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
         {
-            throw new NotImplementedException();
+            return _context.Offers
+                .Where(x => (x.CreatedDate >= createdDateDownLimit && x.CreatedDate <= createdDateUpLimit) &&
+                (x.ExpirationDate >= expirationDateDownLimit && x.ExpirationDate <= expirationDateUpLimit) && x.Name.StartsWith(offerName)); 
+        }
+
+        public IQueryable<Offer> FiltrateOffersByCategoryId(int categoryId, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
+        {
+            return from offers in _context.Offers
+                   where offers.OfferCategories.Any(c => c.CategoryId == categoryId) &&
+                   (offers.CreatedDate >= createdDateDownLimit && offers.CreatedDate <= createdDateUpLimit) &&
+                   (offers.ExpirationDate >= expirationDateDownLimit && offers.ExpirationDate <= expirationDateUpLimit)
+                   select offers;
+        }
+
+        public IQueryable<Offer> FiltrateOffersByNameAndCategoryId(string offerName, int categoryId, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
+        {
+            return from offers in _context.Offers
+                   where offers.OfferCategories.Any(c => c.CategoryId == categoryId) && offers.Name.StartsWith(offerName) &&
+                   (offers.CreatedDate >= createdDateDownLimit && offers.CreatedDate <= createdDateUpLimit) &&
+                   (offers.ExpirationDate >= expirationDateDownLimit && offers.ExpirationDate <= expirationDateUpLimit)
+                   select offers;
+        }
+
+        public IQueryable<Offer> FiltrateOffersByDate(DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
+        {
+            return _context.Offers
+                .Where(x => (x.CreatedDate >= createdDateDownLimit && x.CreatedDate <= createdDateUpLimit) && (x.ExpirationDate >= expirationDateDownLimit && x.ExpirationDate <= expirationDateUpLimit));
+        }
+
+        public DateTime GetCreatedDateDownLimit()
+        {
+            return _context.Offers.Select(x => x.CreatedDate).Min();
+        }
+
+        public DateTime GetCreatedDateUpLimit()
+        {
+            return _context.Offers.Select(x => x.CreatedDate).Max();
+        }
+
+        public DateTime GetExpirationDateDownLimit()
+        {
+            return _context.Offers.Select(x => x.ExpirationDate).Min();
+        }
+
+        public DateTime GetExpirationDateUpLimit()
+        {
+            return _context.Offers.Select(x => x.ExpirationDate).Max();
         }
     }
 }
