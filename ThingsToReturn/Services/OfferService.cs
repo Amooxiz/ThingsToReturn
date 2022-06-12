@@ -21,10 +21,11 @@ namespace ThingsToReturn.Services
 
             for (int i = 0; i < offersList.Count; i ++)
             {
-                offersList[i].CategoryListVM.Categories = _offerCategoryRepository
+
+                var categs = _offerCategoryRepository
                     .GetCategoriesOfOffer(offersList[i].Id)
-                    .ToModel()
-                    .ToList();
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
             }
 
             var result = new OfferToListVM

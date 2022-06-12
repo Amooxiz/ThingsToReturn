@@ -1,0 +1,11 @@
+﻿@page
+@model ThingsToReturn.Pages.OffersModel
+@{
+}
+
+@foreach(var offer in Model.OfferList.Offers)
+{
+    <div class="border-1">
+        <h2>@(offer.Name)</h2>
+    </div>
+}
