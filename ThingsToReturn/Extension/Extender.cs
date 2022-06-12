@@ -22,6 +22,7 @@ public static class Extender
     {
         return categories.Select(c => new CategoryVM
         {
+            Id = c.Id,
             Name = c.Name
         }) ;
             
@@ -30,6 +31,7 @@ public static class Extender
     {
         return offcategories.Select(oc => new CategoryVM
         {
+            Id = oc.CategoryId,
             Name = oc.Category.Name
         });
     }

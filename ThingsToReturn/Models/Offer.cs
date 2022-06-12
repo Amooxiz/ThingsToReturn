@@ -9,6 +9,7 @@
         public Address Address { get; set; }
         [Column(TypeName="Date")]
         public DateTime CreatedDate { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime ExpirationDate { get; set; }
         public AppUser User { get; set; }
         public ICollection<AppUserOffer>? AppUserOffers { get; set; }

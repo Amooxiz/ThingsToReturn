@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ThingsToReturn.Pages
 {
+    [BindProperties]
     public class OffersModel : PageModel
     {
         private readonly ILogger<OffersModel> _logger;
@@ -10,6 +12,7 @@ namespace ThingsToReturn.Pages
         private readonly IOfferService _offerService;
         public CategoryToListVM CategoryList { get; set; }
         public OfferToListVM OfferList { get; set; }
+        public FilterModel FilterChoices { get; set; }
 
         public OffersModel(ILogger<OffersModel> logger, ICategoryService categoryService,
             IOfferCategoryService offercategoryservice, IOfferService offerService)
@@ -21,7 +24,13 @@ namespace ThingsToReturn.Pages
         }
         public void OnGet()
         {
+            CategoryList = _categoryService.GetAllCategories();
             OfferList = _offerService.GetAllOffers();
+        }
+
+        public IActionResult OnPostSelect()
+        {
+            return Page();
         }
     }
 }
