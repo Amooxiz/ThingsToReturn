@@ -3,13 +3,18 @@
     public class Offer
     {
         public int Id { get; set; }
+        [MaxLength(40, ErrorMessage ="Maximum 40 characters allowed")]
+        [MinLength(8, ErrorMessage = "Minimum 8 characters required")]
         public string Name { get; set; }
-        public string? ImagePath { get; set; }
-        public string? Description { get; set; }
+        public string ImagePath { get; set; }
+        [MaxLength(200, ErrorMessage = "Maximum 200 characters allowed")]
+        [MinLength(8, ErrorMessage = "Minimum 8 characters required")]
+        public string Description { get; set; }
         public Address Address { get; set; }
         [Column(TypeName="Date")]
         public DateTime CreatedDate { get; set; }
         [Column(TypeName = "Date")]
+        
         public DateTime ExpirationDate { get; set; }
         public AppUser User { get; set; }
         public ICollection<AppUserOffer>? AppUserOffers { get; set; }

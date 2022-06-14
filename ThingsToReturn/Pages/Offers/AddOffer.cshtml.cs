@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -13,6 +14,7 @@ namespace ThingsToReturn.Pages
         private readonly IOfferCategoryService _offercategoryservice;
         private readonly IOfferService _offerService;
 
+        public IFormFile ImageFile { get; set; }
         public List<int> Categories { get; set; }
         public Offer Offer { get; set; }
         public CategoryToListVM CategoryList { get; set; }
@@ -28,11 +30,13 @@ namespace ThingsToReturn.Pages
         public void OnGet()
         {
             CategoryList = _categoryService.GetAllCategories();
+
         }
 
         public IActionResult OnPost()
         {
-            return RedirectToPage();
+            CategoryList = _categoryService.GetAllCategories();
+            return Page();
         }
     }
 }
