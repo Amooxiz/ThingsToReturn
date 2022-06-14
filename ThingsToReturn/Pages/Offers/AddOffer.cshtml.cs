@@ -36,14 +36,19 @@ namespace ThingsToReturn.Pages
         public IActionResult OnPost()
         {
             CategoryList = _categoryService.GetAllCategories();
+
+            //Tu rzeczy zwiazane ze zdj
             var cwd = Directory.GetCurrentDirectory();
             var filename = ImageFile.FileName;
             string filePath = cwd + "\\Images\\" + filename;
 
+            //Trzeba to pododawac adres do ofert i tam inne wymagan
             Offer.ImagePath = filePath;
 
+            //Zapis zdjeica
             Stream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite);
             ImageFile.CopyTo(fileStream);
+
             _offerService.AddOffer(Offer);
             return Page();
         }
