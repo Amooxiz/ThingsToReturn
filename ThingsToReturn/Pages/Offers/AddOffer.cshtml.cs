@@ -15,7 +15,7 @@ namespace ThingsToReturn.Pages
         private readonly IOfferService _offerService;
 
         public IFormFile ImageFile { get; set; }
-        public List<int> Categories { get; set; }
+        public IList<int> Categories { get; set; }
         public Offer Offer { get; set; }
         public CategoryToListVM CategoryList { get; set; }
 
@@ -36,6 +36,15 @@ namespace ThingsToReturn.Pages
         public IActionResult OnPost()
         {
             CategoryList = _categoryService.GetAllCategories();
+            var cwd = Directory.GetCurrentDirectory();
+            var filename = ImageFile.FileName;
+            string filePath = cwd + "\\Images\\" + filename;
+
+            Offer.ImagePath = filePath;
+
+            Stream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite);
+            ImageFile.CopyTo(fileStream);
+            _offerService.AddOffer(Offer);
             return Page();
         }
     }
