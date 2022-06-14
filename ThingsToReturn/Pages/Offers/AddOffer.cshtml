@@ -1,0 +1,40 @@
+﻿@page
+@model ThingsToReturn.Pages.AddOfferModel
+@{
+}
+
+<div class="mt-4">
+    <h2>Add your advertisement</h2>
+</div>
+
+<form method="post">
+    
+    <div class="form-group">
+        <label asp-for="Offer.Name" class="form-label mt-4">Name</label>
+        <input asp-for="Offer.Name" type="text" class="form-control" id="" placeholder="Enter the name of your offer">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Categories" class="form-label mt-4">Categories (up to 3)</label>
+        <select asp-for="Categories" multiple class="form-control" id="" size="3">
+            @foreach(var category in Model.CategoryList.Categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+      <label for="" class="form-label mt-4">Image</label>
+      <input class="form-control" type="file" id="" placeholder="xd">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Offer.Description" class="form-label mt-4"></label>
+        <textarea asp-for="Offer.Description" class="form-control" rows="7" placeholder="Describe your offer"></textarea>
+    </div>
+      <div class="form-group">
+        <button class="btn btn-primary mt-4" type="submit">Add</button>
+    </div>
+
+</form>
