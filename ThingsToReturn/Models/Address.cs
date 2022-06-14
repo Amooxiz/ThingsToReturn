@@ -12,7 +12,7 @@
 
         [Display(Name = "Building number")]
         [Range(1,10000)]
-        public int? BuildingNr { get; set; }
+        public string? BuildingNr { get; set; }
 
         [Display(Name = "Apartment number")]
         [Range(1, 10000)]
