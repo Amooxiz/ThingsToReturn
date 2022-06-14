@@ -101,7 +101,8 @@ namespace ThingsToReturn.Services
 
         public OfferToListVM FiltrateOffersByName(string offerName, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
         {
-            var offers = _offerRepository.Get20LatestOffers().ToModel();
+            var offers = _offerRepository.FiltrateOffersByName(offerName, createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit)
+                .ToModel();
 
             var offersList = offers.ToList();
 
@@ -124,104 +125,74 @@ namespace ThingsToReturn.Services
         }
         public OfferToListVM FiltrateOffersByCategoryId(int categoryId, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
         {
-            var offers = _offerRepository.FiltrateOffersByCategoryId(categoryId, createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit);
+            var offers = _offerRepository.FiltrateOffersByCategoryId(categoryId, createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit)
+                .ToModel();
 
-            OfferToListVM result = new OfferToListVM();
+            var offersList = offers.ToList();
 
-            result.Offers = new List<OfferVM>();
-            foreach (var offer in offers)
+            for (int i = 0; i < offersList.Count; i++)
             {
-                // mapowanie obiektow
-                var pVM = new OfferVM()
-                {
-                    Name = offer.Name,
-                    Description = offer.Description,
-                    ImagePath = offer.ImagePath,
-                    CreationDate = offer.CreatedDate,
-                    ExpirationDate = offer.ExpirationDate,
-                    UserVM = new AppUserVm() { UserName = offer.User.UserName },
-                    AddressVM = new AddressVM()
-                    {
-                        Country = offer.Address.Country,
-                        City = offer.Address.City,
-                        Street = offer.Address.Street,
-                        ZipCode = offer.Address.ZipCode,
-                        BuildingNr = offer.Address.BuildingNr,
-                        ApartmentNr = offer.Address.ApartmentNr,
-                    },
-                    CategoryListVM = _offerCategoryService.GetCategoriesOfOffer(offer.Id)
-                };
-                result.Offers.Add(pVM);
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
             }
+
+            var result = new OfferToListVM
+            {
+                Offers = offersList
+            };
             result.Count = result.Offers.Count;
+
             return result;
         }
         public OfferToListVM FiltrateOffersByNameAndCategoryId(string offerName, int categoryId, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
         {
-            var offers = _offerRepository.FiltrateOffersByNameAndCategoryId(offerName, categoryId, createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit);
+            var offers = _offerRepository.FiltrateOffersByNameAndCategoryId(offerName, categoryId, createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit)
+                .ToModel();
 
-            OfferToListVM result = new OfferToListVM();
+            var offersList = offers.ToList();
 
-            result.Offers = new List<OfferVM>();
-            foreach (var offer in offers)
+            for (int i = 0; i < offersList.Count; i++)
             {
-                // mapowanie obiektow
-                var pVM = new OfferVM()
-                {
-                    Name = offer.Name,
-                    Description = offer.Description,
-                    ImagePath = offer.ImagePath,
-                    CreationDate = offer.CreatedDate,
-                    ExpirationDate = offer.ExpirationDate,
-                    UserVM = new AppUserVm() { UserName = offer.User.UserName },
-                    AddressVM = new AddressVM()
-                    {
-                        Country = offer.Address.Country,
-                        City = offer.Address.City,
-                        Street = offer.Address.Street,
-                        ZipCode = offer.Address.ZipCode,
-                        BuildingNr = offer.Address.BuildingNr,
-                        ApartmentNr = offer.Address.ApartmentNr,
-                    },
-                    CategoryListVM = _offerCategoryService.GetCategoriesOfOffer(offer.Id)
-                };
-                result.Offers.Add(pVM);
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
             }
+
+            var result = new OfferToListVM
+            {
+                Offers = offersList
+            };
             result.Count = result.Offers.Count;
+
             return result;
         }
         public OfferToListVM FiltrateOffersByDate(DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
         {
-            var offers = _offerRepository.FiltrateOffersByDate(createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit);
+            var offers = _offerRepository.FiltrateOffersByDate(createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit)
+                .ToModel();
 
-            OfferToListVM result = new OfferToListVM();
+            var offersList = offers.ToList();
 
-            result.Offers = new List<OfferVM>();
-            foreach (var offer in offers)
+            for (int i = 0; i < offersList.Count; i++)
             {
-                // mapowanie obiektow
-                var pVM = new OfferVM()
-                {
-                    Name = offer.Name,
-                    Description = offer.Description,
-                    ImagePath = offer.ImagePath,
-                    CreationDate = offer.CreatedDate,
-                    ExpirationDate = offer.ExpirationDate,
-                    UserVM = new AppUserVm() { UserName = offer.User.UserName },
-                    AddressVM = new AddressVM()
-                    {
-                        Country = offer.Address.Country,
-                        City = offer.Address.City,
-                        Street = offer.Address.Street,
-                        ZipCode = offer.Address.ZipCode,
-                        BuildingNr = offer.Address.BuildingNr,
-                        ApartmentNr = offer.Address.ApartmentNr,
-                    },
-                    CategoryListVM = _offerCategoryService.GetCategoriesOfOffer(offer.Id)
-                };
-                result.Offers.Add(pVM);
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
             }
+
+            var result = new OfferToListVM
+            {
+                Offers = offersList
+            };
             result.Count = result.Offers.Count;
+
             return result;
         }
         public DateTime GetCreatedDateDownLimit() => _offerRepository.GetCreatedDateDownLimit();
