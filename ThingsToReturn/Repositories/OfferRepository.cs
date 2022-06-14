@@ -8,7 +8,7 @@ namespace ThingsToReturn.Repositories
         private readonly ThingsContext _context;
         public OfferRepository(ThingsContext context) => _context = context;
 
-        public IQueryable<Offer> GetAllOffers() => _context.Offers.Include(o => o.OfferCategories);
+        public IQueryable<Offer> GetAllOffers() => _context.Offers;
         public void AddOffer(Offer offer) => _context.Offers.Add(offer);
         public IQueryable<Offer> Get20LatestOffers() => _context.Offers.OrderByDescending(x => x.CreatedDate).Take(20);
 
