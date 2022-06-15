@@ -6,10 +6,5 @@ namespace ThingsToReturn.Services
     {
         private readonly IAddressRepository _addressRepository;
         public AddressService(IAddressRepository addressRepository) => _addressRepository = addressRepository;
-
-        public AddressVM GetAddress(string userId)
-        {
-            return _addressRepository.GetAddress(userId).ToModel();
-        }
     }
 }
