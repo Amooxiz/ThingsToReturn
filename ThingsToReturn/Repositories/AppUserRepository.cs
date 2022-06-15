@@ -1,4 +1,5 @@
-﻿using ThingsToReturn.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ThingsToReturn.Data;
 
 namespace ThingsToReturn.Repositories
 {
@@ -6,5 +7,10 @@ namespace ThingsToReturn.Repositories
     {
         private readonly ThingsContext _context;
         public AppUserRepository(ThingsContext context) => _context = context;
+
+        public Address GetAddress(string userId)
+        {
+            return _context.AppUsers.Find(userId).Address;
+        }
     }
 }

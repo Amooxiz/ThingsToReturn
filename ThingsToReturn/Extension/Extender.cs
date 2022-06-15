@@ -61,4 +61,16 @@ public static class Extender
             
         });
     }
+    public static AddressVM ToModel(this Address address)
+    {
+        return new AddressVM
+        {
+            Country = address.Country,
+            City = address.City,
+            Street = address.Street,
+            ZipCode = address.ZipCode,
+            BuildingNr = address.BuildingNr,
+            ApartmentNr = address.ApartmentNr
+        };
+    }
 }
