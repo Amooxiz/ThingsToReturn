@@ -112,5 +112,10 @@ namespace ThingsToReturn.Repositories
         {
             return _context.Offers.Select(x => x.ExpirationDate).Max();
         }
+
+        public IQueryable<Offer> GetUsersOffers(string userId)
+        {
+            return _context.Offers.Where(x => x.User.Id == userId);
+        }
     }
 }

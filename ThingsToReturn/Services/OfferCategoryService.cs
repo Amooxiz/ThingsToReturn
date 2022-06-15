@@ -10,8 +10,8 @@ namespace ThingsToReturn.Services
 
         public CategoryToListVM GetCategoriesOfOffer(int offerId)
         {
-            var categories1 = _offerCategoryRepository.GetCategoriesOfOffer(offerId);
-            var categories = categories1.ToModel();
+            
+            var categories = _offerCategoryRepository.GetCategoriesOfOffer(offerId).ToModel();
 
             var result = new CategoryToListVM
             {

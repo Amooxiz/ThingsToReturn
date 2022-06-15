@@ -1,4 +1,5 @@
-﻿using ThingsToReturn.Extension;
+﻿using System.Security.Claims;
+using ThingsToReturn.Extension;
 
 namespace ThingsToReturn.Services
 {
@@ -274,5 +275,28 @@ namespace ThingsToReturn.Services
         public DateTime GetExpirationDateDownLimit() => _offerRepository.GetExpirationDateDownLimit();
         public DateTime GetExpirationDateUpLimit() => _offerRepository.GetExpirationDateUpLimit();
         public void AddOffer(Offer offer) => _offerRepository.AddOffer(offer);
+
+        public OfferToListVM GetUsersOffers(Claim claim)
+        {
+            var offers = _offerRepository.GetUsersOffers(claim.Value).ToModel();
+            var offersList = offers.ToList();
+
+            for (int i = 0; i < offersList.Count; i++)
+            {
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
+            }
+
+            OfferToListVM results = new()
+            {
+                Offers = offersList
+            };
+            results.Count = results.Offers.Count;
+
+            return results;
+        }
     }
 }

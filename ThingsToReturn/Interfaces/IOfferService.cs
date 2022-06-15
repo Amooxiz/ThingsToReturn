@@ -1,4 +1,6 @@
-﻿namespace ThingsToReturn.Interfaces
+﻿using System.Security.Claims;
+
+namespace ThingsToReturn.Interfaces
 {
     public interface IOfferService
     {
@@ -7,6 +9,7 @@
         public void ReserveOffer(string bookingUserId, int offerId);
         public void CancelReservation(int offerId);
         public OfferToListVM Get20LatestOffers();
+        public OfferToListVM GetUsersOffers(Claim claim);
         public OfferToListVM FiltrateOffersByName(string offerName, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit);
         public OfferToListVM FiltrateOffersByCategoryId(int categoryId, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit);
         public OfferToListVM FiltrateOffersByNameAndCategoryId(string offerName, int categoryId, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit);
