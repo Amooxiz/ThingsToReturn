@@ -39,41 +39,15 @@ namespace ThingsToReturn.Services
             return result;
         }
 
-        //public OfferToListVM GetAllOffers()
-        //{
-        //    var offers = _offerRepository.GetAllOffers();
+        public void ReserveOffer(string bookingUserId, int offerId)
+        {
+            _offerRepository.ReserveOffer(bookingUserId, offerId);
+        }
 
-        //    OfferToListVM result = new OfferToListVM();
-
-        //    result.Offers = new List<OfferVM>();
-        //    foreach (var offer in offers)
-        //    {
-        //        // mapowanie obiektow
-        //        var pVM = new OfferVM()
-        //        {
-        //            Name = offer.Name,
-        //            Description = offer.Description,
-        //            ImagePath = offer.ImagePath,
-        //            CreationDate = offer.CreatedDate,
-        //            ExpirationDate = offer.ExpirationDate,
-        //            UserVM = new AppUserVm() { UserName = offer.User.UserName},
-        //            AddressVM = new AddressVM()
-        //            {
-        //                Country = offer.Address.Country,
-        //                City = offer.Address.City,
-        //                Street = offer.Address.Street,
-        //                ZipCode = offer.Address.ZipCode,
-        //                BuildingNr = offer.Address.BuildingNr,
-        //                ApartmentNr = offer.Address.ApartmentNr,
-        //            },
-        //            CategoryListVM = _offerCategoryService.GetCategoriesOfOffer(offer.Id)
-        //        };
-        //        result.Offers.Add(pVM);
-        //    }
-        //    result.Count = result.Offers.Count;
-        //    return result;
-
-        //}
+        public void CancelReservation(int offerId)
+        {
+            _offerRepository.CancelReservation(offerId);
+        }
 
         public OfferToListVM Get20LatestOffers()
         {
@@ -174,6 +148,106 @@ namespace ThingsToReturn.Services
         public OfferToListVM FiltrateOffersByDate(DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
         {
             var offers = _offerRepository.FiltrateOffersByDate(createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit)
+                .ToModel();
+
+            var offersList = offers.ToList();
+
+            for (int i = 0; i < offersList.Count; i++)
+            {
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
+            }
+
+            var result = new OfferToListVM
+            {
+                Offers = offersList
+            };
+            result.Count = result.Offers.Count;
+
+            return result;
+        }
+
+        public OfferToListVM FiltrateOffersByCity(string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
+        {
+            var offers = _offerRepository.FiltrateOffersByCity(city, createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit)
+                .ToModel();
+
+            var offersList = offers.ToList();
+
+            for (int i = 0; i < offersList.Count; i++)
+            {
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
+            }
+
+            var result = new OfferToListVM
+            {
+                Offers = offersList
+            };
+            result.Count = result.Offers.Count;
+
+            return result;
+        }
+
+        public OfferToListVM FiltrateOffersByNameAndCity(string offerName, string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
+        {
+            var offers = _offerRepository.FiltrateOffersByNameAndCity(offerName, city, createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit)
+                .ToModel();
+
+            var offersList = offers.ToList();
+
+            for (int i = 0; i < offersList.Count; i++)
+            {
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
+            }
+
+            var result = new OfferToListVM
+            {
+                Offers = offersList
+            };
+            result.Count = result.Offers.Count;
+
+            return result;
+        }
+
+        public OfferToListVM FiltrateOffersByNameAndCategoryIdAndCity(string offerName, int categoryId, string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
+        {
+            var offers = _offerRepository.FiltrateOffersByNameAndCategoryIdAndCity(offerName, categoryId, city, createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit)
+                .ToModel();
+
+            var offersList = offers.ToList();
+
+            for (int i = 0; i < offersList.Count; i++)
+            {
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
+            }
+
+            var result = new OfferToListVM
+            {
+                Offers = offersList
+            };
+            result.Count = result.Offers.Count;
+
+            return result;
+        }
+
+        public OfferToListVM FiltrateOffersByCategoryIdAndCity(int categoryId, string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit)
+        {
+            var offers = _offerRepository.FiltrateOffersByCategoryIdAndCity(categoryId, city, createdDateDownLimit, createdDateUpLimit, expirationDateDownLimit, expirationDateUpLimit)
                 .ToModel();
 
             var offersList = offers.ToList();
