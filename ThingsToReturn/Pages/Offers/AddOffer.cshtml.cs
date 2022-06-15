@@ -14,6 +14,7 @@ namespace ThingsToReturn.Pages
         private readonly IOfferCategoryService _offercategoryservice;
         private readonly IOfferService _offerService;
 
+        public Address Address { get; set; }
         public IFormFile ImageFile { get; set; }
         public IList<int> Categories { get; set; }
         public Offer Offer { get; set; }
@@ -44,6 +45,7 @@ namespace ThingsToReturn.Pages
 
             //Trzeba to pododawac adres do ofert i tam inne wymagan
             Offer.ImagePath = filePath;
+            Offer.CreatedDate = DateTime.Now;
 
             //Zapis zdjeica
             Stream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite);
