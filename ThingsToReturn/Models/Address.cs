@@ -11,7 +11,6 @@
         public string? ZipCode { get; set; }
 
         [Display(Name = "Building number")]
-        [Range(1,10000)]
         public string? BuildingNr { get; set; }
 
         [Display(Name = "Apartment number")]

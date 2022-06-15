@@ -9,7 +9,7 @@
         public string Name { get; set; }
         public string ImagePath { get; set; }
         
-        [MaxLength(200, ErrorMessage = "Maximum 200 characters allowed")]
+        [MaxLength(245, ErrorMessage = "Maximum 200 characters allowed")]
         [MinLength(8, ErrorMessage = "Minimum 8 characters required")]
         public string Description { get; set; }
         public Address Address { get; set; }

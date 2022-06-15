@@ -39,9 +39,8 @@ namespace ThingsToReturn.Pages
             CategoryList = _categoryService.GetAllCategories();
 
             //Tu rzeczy zwiazane ze zdj
-            var cwd = Directory.GetCurrentDirectory();
             var filename = ImageFile.FileName;
-            string filePath = cwd + "\\Images\\" + filename;
+            string filePath = "/Images/" + filename;
 
             //Trzeba to pododawac adres do ofert i tam inne wymagan
             Offer.ImagePath = filePath;
