@@ -1,0 +1,83 @@
+﻿@page
+@model ThingsToReturn.Pages.AddOfferModel
+@{
+}
+
+<div class="mt-4">
+    <h2>Add your advertisement</h2>
+</div>
+
+<form method="post" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label asp-for="Offer.Name" class="form-label mt-4">Name</label>
+        <input asp-for="Offer.Name" type="text" class="form-control" id="" placeholder="Enter the name of your offer">
+        <span asp-validation-for="Offer.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Categories" class="form-label mt-4">Categories (up to 3)</label>
+        <select asp-for="Categories" multiple class="form-control" id="" size="3">
+            @foreach(var category in Model.CategoryList.Categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Categories" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+      <input asp-for="ImageFile" accept="image/jpg,image/jpeg,image/png" class="form-control mt-4" placeholder="xd">
+      <span asp-validation-for="ImageFile" lang="en-gb" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Offer.ExpirationDate" class="form-label mt-4">Expiration date from</label>
+        <input asp-for="Offer.ExpirationDate" class="form-control"/>
+        <span asp-validation-for="Offer.ExpirationDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Offer.Description" class="form-label mt-4"></label>
+        <textarea asp-for="Offer.Description" class="form-control" rows="7" placeholder="Describe your offer"></textarea>
+        <span asp-validation-for="Offer.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <label asp-for="Address.Country" class="form-label mt-4"></label>
+        <input asp-for="Address.Country" class="form-control"  aria-required="true" required/>
+        <span asp-validation-for="Address.Country" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <label asp-for="Address.City" class="form-label mt-4"></label>
+        <input asp-for="Address.City" class="form-control" aria-required="true" required/>
+        <span asp-validation-for="Address.City" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <label asp-for="Address.ZipCode" class="form-label mt-4"></label>
+        <input asp-for="Address.ZipCode" class="form-control"  aria-required="true" required/>
+        <span asp-validation-for="Address.ZipCode" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <label asp-for="Address.Street" class="form-label mt-4"></label>
+        <input asp-for="Address.Street" class="form-control"  aria-required="true" required/>
+        <span asp-validation-for="Address.Street" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <label asp-for="Address.BuildingNr" class="form-label mt-4"></label>
+        <input asp-for="Address.BuildingNr" class="form-control"  aria-required="true" required/>
+        <span asp-validation-for="Address.BuildingNr" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <label asp-for="Address.ApartmentNr" class="form-label mt-4"></label>
+        <input asp-for="Address.ApartmentNr" class="form-control" aria-required="true" required />
+        <span asp-validation-for="Address.ApartmentNr" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary mt-4" type="submit">Add</button>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

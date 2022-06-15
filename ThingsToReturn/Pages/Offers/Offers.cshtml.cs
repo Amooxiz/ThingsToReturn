@@ -24,12 +24,14 @@ namespace ThingsToReturn.Pages
         }
         public void OnGet()
         {
-            CategoryList = _categoryService.GetAllCategories();
             OfferList = _offerService.GetAllOffers();
+            CategoryList = _categoryService.GetAllCategories();
         }
 
         public IActionResult OnPostSelect()
         {
+            CategoryList = _categoryService.GetAllCategories();
+            OfferList = _offerService.GetAllOffers();
             return Page();
         }
     }

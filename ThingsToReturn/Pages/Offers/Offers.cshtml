@@ -3,25 +3,17 @@
 @{
 }
 
- <form class="row g-3" method="post" asp-page-handler="select">
-    <div class="col-md-2">
-          <label for="categorySelect" class="form-label mt-4">Search by category</label>
-          <select asp-for="FilterChoices.CategoryId" class="form-select" id="categorySelect">
+ <form class="row g-3 align-items-md-start" method="post" asp-page-handler="select">
+   <div class="col-md-2">
+        <label asp-for="FilterChoices.Categories" class="form-label mt-4">Categories (up to 3)</label>
+        <select asp-for="FilterChoices.Categories" multiple class="form-control" id="" size="3">
             @foreach(var category in Model.CategoryList.Categories)
             {
-                    <option value="@category.Id">@category.Name</option>
-            }
-            </select>
-    </div>
-  @*  <div class="col-md-2"> 
-         <label for="dateSelect" class="form-label mt-4">Search by category</label>
-         <select class="form-select" id="dateSelect">
-            @foreach(var category in Model.CategoryList.Categories)
-            {
-                    <option>@category.Name</option>
+                <option value="@category.Id">@category.Name</option>
             }
         </select>
-    </div>*@
+        <span asp-validation-for="FilterChoices.Categories" class="text-danger"></span>
+    </div>
     <div class="col-md-2">
         <label asp-for="FilterChoices.CreationDateFrom" class="form-label mt-4">Creation date from</label>
         <input asp-for="FilterChoices.CreationDateFrom" class="form-control"/>
@@ -39,9 +31,10 @@
         <label asp-for="FilterChoices.ExpirationDateTo" class="form-label mt-4">Expiration date to</label>
         <input asp-for="FilterChoices.ExpirationDateTo" class="form-control"/>
     </div>
-    <div class="">
-        <button class="btn btn-primary" type="submit">Szukaj</button>
+    <div  class="">
+        <button class="btn btn-primary " type="submit">Szukaj</button>
     </div>
+    <hr />
 </form>
 
 @foreach(var offer in Model.OfferList.Offers)

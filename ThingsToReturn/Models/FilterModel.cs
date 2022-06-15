@@ -2,7 +2,7 @@
 {
     public class FilterModel
     {
-        public string CategoryId { get; set; }
+        public IList<int> Categories { get; set; }
         [DataType("Date")]
         public DateTime? CreationDateFrom { get; set; }
         [DataType("Date")]
