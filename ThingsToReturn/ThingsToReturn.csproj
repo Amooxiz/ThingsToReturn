@@ -15,13 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Images\2.jpg" />
-    <None Include="wwwroot\Images\3.jpg" />
-    <None Include="wwwroot\Images\4.jpg" />
-    <None Include="wwwroot\Images\5.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />

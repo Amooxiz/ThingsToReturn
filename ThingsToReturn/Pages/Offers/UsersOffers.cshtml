@@ -3,9 +3,25 @@
 @{
 }
 
-@foreach(var offer in Model.OfferList.Offers)
-{
-    <div>
-        @offer.Description
-    </div>
-}
+<h2 class="card-body">You have @Model.OfferList.Count advertisements</h2>
+<div class="grid-offers-container">
+    @foreach(var offer in Model.OfferList.Offers)
+    {
+        <div class="offers-row-grid-box-user" style="width: 75%">
+            <div  class="img-user">
+               <img src="@offer.ImagePath" />
+            </div>
+            <div class="row-box-1">
+               <h6 class="card-header"> @(offer.Name)</h6>
+            </div>
+            <div class="row-box-2">
+                <p >
+                   @offer.Description
+                </p>
+            </div>
+            <div class="button-del">
+                <a href="/Index" class="btn btn-primary">Delete</a>
+            </div>
+        </div>
+    }
+</div>

@@ -24,6 +24,7 @@ body {
     background-color: white;
     grid-template-rows: 1fr 2fr;
     grid-template-columns: 250px 1fr;
+    max-height: 250px;
 }
 
 .row-box-1 {
@@ -45,8 +46,33 @@ body {
     grid-column: 1/2;
 }
 
-.img img {
+img {
 
     height: 100%;
     width: 100%;
+}
+
+
+.offers-row-grid-box-user {
+    margin: 10px;
+    display: grid;
+    background-color: white;
+    grid-template-rows: 1fr 2fr 60px;
+    grid-template-columns: 250px 1fr;
+    max-height: 300px;
+}
+
+.img-user {
+    margin: 10px;
+    grid-row: 1/4;
+    grid-column: 1/2;
+}
+
+.button-del
+{
+    margin: 10px;
+    display: flex;
+    justify-content: end;
+    grid-row: 3/4;
+    grid-column: 2/3;
 }
