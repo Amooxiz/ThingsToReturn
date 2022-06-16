@@ -7,21 +7,19 @@ namespace ThingsToReturn.Pages
 {
     [BindProperties]
     [Authorize]
-    public class UsersOffersModel: PageModel
+    public class DeleteOfferModel : PageModel
     {
         private readonly IOfferService _offerService;
-        public OfferToListVM OfferList { get; set; }
+        public Offer Offer { get; set; }
 
-        public UsersOffersModel(ILogger<UsersOffersModel> logger, IOfferService offerService)
+        public DeleteOfferModel(ILogger<DeleteOfferModel> logger, IOfferService offerService)
         {
             _offerService = offerService;
         }
-        public void OnGet()
+        public void OnGet(int id)
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            OfferList = _offerService.GetUsersOffers(claim);
-        }
+            Offer = _offerService.GetOfferToDel(id);
+        }   
 
         public IActionResult OnPost()
         {

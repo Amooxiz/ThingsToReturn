@@ -1,5 +1,5 @@
 ﻿@page
-@model ThingsToReturn.Pages.UsersOfffers
+@model ThingsToReturn.Pages.UsersOffersModel
 @{
 }
 
@@ -20,7 +20,7 @@
                 </p>
             </div>
             <div class="button-del">
-                <a href="/Index" class="btn btn-primary">Delete</a>
+                <a asp-page="/Offers/Delete" asp-route-id="@offer.Id" class="btn btn-primary">Delete</a>
             </div>
         </div>
     }

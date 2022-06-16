@@ -298,5 +298,10 @@ namespace ThingsToReturn.Services
 
             return results;
         }
+
+        public Offer GetOfferToDel(int offerId)
+        {
+            return _offerRepository.GetOfferToDel(offerId);
+        }
     }
 }

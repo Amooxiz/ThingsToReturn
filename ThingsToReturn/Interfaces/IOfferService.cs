@@ -18,7 +18,7 @@ namespace ThingsToReturn.Interfaces
         public OfferToListVM FiltrateOffersByCategoryIdAndCity(int categoryId, string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit);
         public OfferToListVM FiltrateOffersByCity(string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit);
         public OfferToListVM FiltrateOffersByNameAndCategoryIdAndCity(string offerName, int categoryId, string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit);
-
+        public Offer GetOfferToDel(int offerId);
         public DateTime GetCreatedDateDownLimit();
         public DateTime GetCreatedDateUpLimit();
         public DateTime GetExpirationDateDownLimit();

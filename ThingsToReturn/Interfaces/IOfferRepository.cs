@@ -16,6 +16,7 @@
         public IQueryable<Offer> FiltrateOffersByCategoryIdAndCity(int categoryId, string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit);
         public IQueryable<Offer> FiltrateOffersByCity(string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit);
         public IQueryable<Offer> FiltrateOffersByNameAndCategoryIdAndCity(string offerName, int categoryId, string city, DateTime createdDateDownLimit, DateTime createdDateUpLimit, DateTime expirationDateDownLimit, DateTime expirationDateUpLimit);
+        public Offer GetOfferToDel(int offerId);
         public DateTime GetCreatedDateDownLimit();
         public DateTime GetCreatedDateUpLimit();
         public DateTime GetExpirationDateDownLimit();
