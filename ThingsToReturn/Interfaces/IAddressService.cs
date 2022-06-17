@@ -2,5 +2,6 @@
 {
     public interface IAddressService
     {
+        public List<string> GetAllCities();
     }
 }
