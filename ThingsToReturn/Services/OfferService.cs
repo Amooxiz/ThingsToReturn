@@ -113,6 +113,30 @@ namespace ThingsToReturn.Services
 
             return result;
         }
+
+        public OfferToListVM GetOffersByCategoryId(int categoryId)
+        {
+            var offers = _offerRepository.FiltrateOffersByCategoryId(categoryId).ToModel();
+
+            var offersList = offers.ToList();
+
+            for (int i = 0; i < offersList.Count; i++)
+            {
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
+            }
+
+            var result = new OfferToListVM
+            {
+                Offers = offersList
+            };
+            result.Count = result.Offers.Count;
+
+            return result;
+        }
         
         public DateTime GetCreatedDateDownLimit() => _offerRepository.GetCreatedDateDownLimit();
         public DateTime GetCreatedDateUpLimit() => _offerRepository.GetCreatedDateUpLimit();

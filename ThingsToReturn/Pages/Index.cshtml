@@ -3,10 +3,26 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-
+<form class="row g-3 align-items-md-start" method="post" asp-page-handler="select">
+    <div class="btn-group">
+        @foreach(var category in Model.Categories.Categories)
+        {
+            <input type="button" onclick="change(this)" value="@category.Id" name="@category.Name"/>
+        }
+    </div>
+    
+</form>
+<div id="1">
+    
 </div>
+    <script type="text/javascript">
+        function change (el){
+            @Model.CategoryId = el.value;
+            const para = document.createElement("p");
+            const text = document.createTextNode("xdd");
+            para.appendChild(text);
+            const dive = document.getElementById("1");
+            dive.appendChild(para);
+        }
+        
+    </script>
