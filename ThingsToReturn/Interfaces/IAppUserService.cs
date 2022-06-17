@@ -4,5 +4,7 @@
     {
         public AddressVM GetAddress(string userId);
         public AppUser GetUser(string userId);
+        
+        public AppUserToListVM GetInterestedUsers(int offerId);
     }
 }
