@@ -74,5 +74,4 @@ public static class Extender
             ApartmentNr = address.ApartmentNr
         };
     }
-    public static IQueryable<AppUserVm> ToModel(this IQueryable<Offer> offers)
 }

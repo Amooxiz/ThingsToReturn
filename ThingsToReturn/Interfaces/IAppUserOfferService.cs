@@ -2,7 +2,6 @@
 {
     public interface IAppUserOfferService
     {
-        public void AddOffersWithCategories(Offer offer, IList<Category> categories);
 
     }
 }

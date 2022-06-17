@@ -8,6 +8,18 @@ namespace ThingsToReturn.Services
         public OfferCategoryService(IOfferCategoryRepository offerCategoryRepository)
             => _offerCategoryRepository = offerCategoryRepository;
 
+        public void AddOffersWithCategories(Offer offer, IList<Category> categories)
+        {
+            var offercats = categories.Select(c => new OfferCategory
+            {
+
+                Category = c,
+                Offer = offer,
+            }).ToList();
+            _offerCategoryRepository.AddOffersWithCategories(offercats);
+            
+        }
+
         public CategoryToListVM GetCategoriesOfOffer(int offerId)
         {
             

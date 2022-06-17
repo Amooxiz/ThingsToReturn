@@ -2,6 +2,5 @@
 {
     public interface IAppUserOfferRepository
     { 
-        public void AddOffersWithCategories();
     }
 }

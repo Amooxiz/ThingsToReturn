@@ -8,6 +8,12 @@ namespace ThingsToReturn.Repositories
         private readonly ThingsContext _context;
         public OfferCategoryRepository(ThingsContext context) => _context = context;
 
+        public void AddOffersWithCategories(IList<OfferCategory> offerscats)
+        {
+            _context.OfferCategories.AddRange(offerscats);
+            _context.SaveChanges();
+        }
+
         public IQueryable<OfferCategory> GetCategoriesOfOffer(int offerId) => _context.OfferCategories.Where(x => x.OfferId == offerId).Include(x => x.Category);
 
         public IQueryable<OfferCategory> GetCategoryOffers(int categoryId) => _context.OfferCategories.Where(x => x.CategoryId == categoryId).Include(x => x.Offer);

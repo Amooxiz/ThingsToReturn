@@ -58,7 +58,7 @@ namespace ThingsToReturn.Pages
             Offer.User = _appUserService.GetUser(claim.Value);
 
             var categories = _categoryService.GetCategoriesByIdList(Categories);
-
+            _offercategoryservice.AddOffersWithCategories(Offer, categories);
 
 
             //Zapis zdjeica
@@ -66,7 +66,6 @@ namespace ThingsToReturn.Pages
             ImageFile.CopyTo(fileStream);
             fileStream.Dispose();
 
-            _offerService.AddOffer(Offer);
             return Page();
         }
     }

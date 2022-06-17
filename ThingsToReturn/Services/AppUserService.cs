@@ -13,14 +13,14 @@ namespace ThingsToReturn.Services
             return _appUserRepository.GetAddress(userId).ToModel();
         }
 
+        public AppUserToListVM GetInterestedUsers(int offerId)
+        {
+            throw new NotImplementedException();
+        }
+
         public AppUser GetUser(string userId)
         {
             return _appUserRepository.GetUser(userId);
-        }
-
-        public AppUserToListVM GetInterestedUsers(int offerId)
-        {
-            var appUsers = _appUserRepository.GetInterestedUsers(offerId).ToModel();
         }
     }
 }
