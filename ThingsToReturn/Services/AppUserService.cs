@@ -12,5 +12,10 @@ namespace ThingsToReturn.Services
         {
             return _appUserRepository.GetAddress(userId).ToModel();
         }
+
+        public AppUser GetUser(string userId)
+        {
+            return _appUserRepository.GetUser(userId);
+        }
     }
 }

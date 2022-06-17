@@ -12,5 +12,10 @@ namespace ThingsToReturn.Repositories
         {
             return _context.AppUsers.Find(userId).Address;
         }
+
+        public AppUser GetUser(string userId)
+        {
+           return _context.AppUsers.Find(userId);
+        }
     }
 }

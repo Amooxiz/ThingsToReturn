@@ -37,7 +37,6 @@ namespace ThingsToReturn.Pages
             CategoryList = _categoryService.GetAllCategories();
             cities = _addressservice.GetAllCities();
 
-            if (ModelState.IsValid)
                 OfferList = _offerService.FiltrateOffers(FilterChoices);
             return Page();
         }
