@@ -3,26 +3,32 @@
 @{
     ViewData["Title"] = "Home page";
 }
-<form class="row g-3 align-items-md-start" method="post" asp-page-handler="select">
     <div class="btn-group">
+
         @foreach(var category in Model.Categories.Categories)
         {
-            <input type="button" onclick="change(this)" value="@category.Id" name="@category.Name"/>
+            <form class="row g-3 align-items-md-start" method="post" asp-page-handler="select">
+                <input asp-for="CategoryId"  hidden  value="@category.Id"/>
+                <button class="btn btn-primary" type="submit">@category.Name</button>
+            </form>
         }
     </div>
     
-</form>
-<div id="1">
-    
+<div class="grid-offers-container">
+    @foreach(var offer in Model.OfferList.Offers)
+    {
+        <div class="offers-row-grid-box" style="width: 75%">
+            <div  class="img">
+               <img src="@offer.ImagePath" />
+            </div>
+            <div class="row-box-1">
+               <h6 class="card-header"> @(offer.Name)</h6>
+            </div>
+            <div class="row-box-2">
+                <p >
+                   @offer.Description
+                </p>
+            </div>
+        </div>
+    }
 </div>
-    <script type="text/javascript">
-        function change (el){
-            @Model.CategoryId = el.value;
-            const para = document.createElement("p");
-            const text = document.createTextNode("xdd");
-            para.appendChild(text);
-            const dive = document.getElementById("1");
-            dive.appendChild(para);
-        }
-        
-    </script>

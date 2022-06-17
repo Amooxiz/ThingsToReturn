@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ThingsToReturn.Pages
 {
+
+    [BindProperties]
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
@@ -11,6 +13,7 @@ namespace ThingsToReturn.Pages
         private readonly IOfferService _offerservice;
 
         public CategoryToListVM Categories { get; set; }
+        [HiddenInput]
         public int CategoryId { get; set; }
         public OfferToListVM OfferList { get; set; }
 
