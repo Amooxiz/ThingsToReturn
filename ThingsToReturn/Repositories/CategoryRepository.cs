@@ -14,5 +14,10 @@ namespace ThingsToReturn.Repositories
             _context.Categories.Add(category);
             _context.SaveChanges();
         }
+
+        public IQueryable<Category> GetCategoriesByIdList(IList<int> Categories)
+        {
+            return _context.Categories.Where(x => Categories.Contains(x.Id));
+        }
     }
 }
