@@ -12,4 +12,5 @@ public class OfferVM
     public AppUserVm UserVM { get; set; } 
     public CategoryToListVM CategoryListVM { get; set; }
     public bool IsReservated { get; set; }
+    public string? BookingId { get; set; }
 }
