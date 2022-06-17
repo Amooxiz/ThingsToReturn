@@ -17,5 +17,16 @@ namespace ThingsToReturn.Services
 
             return result;
         }
+
+        public CategoryToListVM GetCategoriesByIdList(IList<int> Categories)
+        {
+            var categories = _categoryRepository.GetCategoriesByIdList(Categories).ToModel();
+            var result = new CategoryToListVM();
+
+            result.Categories = categories.ToList();
+            result.Count = result.Categories.Count;
+
+            return result;
+        }
     }
 }
