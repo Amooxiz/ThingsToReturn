@@ -3,6 +3,6 @@
     public interface ICategoryService
     {
         public CategoryToListVM GetAllCategories();
-        public CategoryToListVM GetCategoriesByIdList(IList<int> Categories);
+        public IList<Category> GetCategoriesByIdList(IList<int> Categories);
     }
 }
