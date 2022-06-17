@@ -17,5 +17,17 @@ namespace ThingsToReturn.Services
         {
             return _appUserRepository.GetUser(userId);
         }
+
+        public AppUserToListVM GetInterestedUsers(int offerId)
+        {
+            var users = _appUserRepository.GetInterestedUsers(offerId).ToModel();
+
+            var result = new AppUserToListVM();
+
+            result.AppUsers = users.ToList();
+            result.Count = result.AppUsers.Count;
+
+            return result;
+        }
     }
 }

@@ -17,5 +17,12 @@ namespace ThingsToReturn.Repositories
         {
            return _context.AppUsers.Find(userId);
         }
+
+        public IQueryable<AppUser> GetInterestedUsers(int offerId)
+        {
+            return from appUsers in _context.AppUsers
+                   where appUsers.AppUserOffers.Any(c => c.OfferId == offerId)
+                   select appUsers;
+        }
     }
 }

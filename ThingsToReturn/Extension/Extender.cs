@@ -73,4 +73,11 @@ public static class Extender
             ApartmentNr = address.ApartmentNr
         };
     }
+    public static IQueryable<AppUserVm> ToModel(this IQueryable<AppUser> appUsers)
+    {
+        return appUsers.Select(x => new AppUserVm()
+        {
+            UserName = x.UserName
+        });    
+    }
 }
