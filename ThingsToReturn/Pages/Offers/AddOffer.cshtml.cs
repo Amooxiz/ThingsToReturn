@@ -18,7 +18,7 @@ namespace ThingsToReturn.Pages
 
         public Address Address { get; set; }
         public IFormFile ImageFile { get; set; }
-        public IList<Category> Categories { get; set; }
+        public IList<int> Categories { get; set; }
         public Offer Offer { get; set; }
         public CategoryToListVM CategoryList { get; set; }
 
@@ -56,6 +56,9 @@ namespace ThingsToReturn.Pages
             Offer.CreatedDate = DateTime.Now;
             Offer.Address = Address;
             Offer.User = _appUserService.GetUser(claim.Value);
+
+            var categories = _categoryService.GetCategoriesByIdList(Categories);
+
 
 
             //Zapis zdjeica
