@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<div class="text-center">
     <div class="btn-group">
 
         @foreach(var category in Model.Categories.Categories)
@@ -13,6 +14,7 @@
             </form>
         }
     </div>
+</div>
     
 <div class="grid-offers-container">
     @foreach(var offer in Model.OfferList.Offers)

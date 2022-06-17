@@ -58,7 +58,8 @@ public static class Extender
                 Street = o.Address.Street,
                 ZipCode = o.Address.ZipCode
             },
-            
+            IsReservated = (String.IsNullOrEmpty(o.BookingId)) ? false : true,
+            BookingId = o.BookingId
         });
     }
     public static AddressVM ToModel(this Address address)
@@ -73,4 +74,5 @@ public static class Extender
             ApartmentNr = address.ApartmentNr
         };
     }
+    public static IQueryable<AppUserVm> ToModel(this IQueryable<Offer> offers)
 }
