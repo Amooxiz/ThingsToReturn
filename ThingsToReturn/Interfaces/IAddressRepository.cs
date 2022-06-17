@@ -2,5 +2,6 @@
 {
     public interface IAddressRepository
     {
+        public IQueryable<string> GetAllCities();
     }
 }
