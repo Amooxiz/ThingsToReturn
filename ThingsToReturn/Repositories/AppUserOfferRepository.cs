@@ -5,5 +5,11 @@ namespace ThingsToReturn.Repositories
     {
         private readonly ThingsContext _context;
         public AppUserOfferRepository(ThingsContext context) => _context = context;
+
+        public void AddFollowOffer(AppUserOffer appUserOffer)
+        {
+            _context.AppUserOffer.Add(appUserOffer);
+            _context.SaveChanges();
+        }
     }
 }
