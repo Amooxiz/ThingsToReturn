@@ -4,17 +4,19 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="btn-group">
+<div class="text-center">
+    <div class="btn-group ">
 
-    @foreach(var category in Model.Categories.Categories)
-    {
-        <form method="post" asp-page-handler="select">
-            <input asp-for="CategoryId"  hidden  value="@category.Id"/>
-            <button class="button_round" type="submit">@category.Name</button>
-        </form>
-    }
+        @foreach(var category in Model.Categories.Categories)
+        {
+            <form method="post" asp-page-handler="select">
+                <input asp-for="CategoryId"  hidden  value="@category.Id"/>
+                <button class="button_round" type="submit">@category.Name</button>
+            </form>
+        }
+    </div>
+
 </div>
-
     
                 
 <div class="grid-offers-container">
