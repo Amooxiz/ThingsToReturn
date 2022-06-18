@@ -23,7 +23,7 @@ namespace ThingsToReturn.Services
             return _appUserRepository.GetUser(userId);
         }
 
-        public AppUserToListVM GetInterestedUsers(int offerId)
+      /*  public AppUserToListVM GetInterestedUsers(int offerId)
         {
             var users = _appUserRepository.GetInterestedUsers(offerId).ToModel();
 
@@ -33,6 +33,6 @@ namespace ThingsToReturn.Services
             result.Count = result.AppUsers.Count;
 
             return result;
-        }
+        }*/
     }
 }
