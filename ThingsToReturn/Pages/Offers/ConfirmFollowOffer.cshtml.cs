@@ -34,7 +34,6 @@ namespace ThingsToReturn.Pages
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             if (Offer.Id != 0)
             {
-                if(_appuserOfferService.)
                 _appuserOfferService.AddFollowOffer(claim?.Value, offer);
             }
 
