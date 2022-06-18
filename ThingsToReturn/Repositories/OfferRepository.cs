@@ -77,6 +77,10 @@ namespace ThingsToReturn.Repositories
         {
             return _context.Offers.Where(x => x.User.Id == userId);
         }
+        public IQueryable<Offer> GetNotUsersOffers(string userId)
+        {
+            return _context.Offers.Where(x => x.User.Id != userId);
+        }
 
         public Offer GetOffer(int offerId)
         {

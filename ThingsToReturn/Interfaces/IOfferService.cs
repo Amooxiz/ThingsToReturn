@@ -11,6 +11,7 @@ namespace ThingsToReturn.Interfaces
         public void CancelReservation(int offerId);
         public OfferToListVM Get20LatestOffers();
         public OfferToListVM GetUsersOffers(Claim claim);
+        public OfferToListVM GetNotUsersOffers(Claim claim);
         public OfferToListVM FiltrateOffers(FilterModel filterModel);
         public OfferToListVM GetOffersByCategoryId(int categoryId);
         public Offer GetOffer(int offerId);
