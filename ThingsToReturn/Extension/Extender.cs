@@ -78,6 +78,7 @@ public static class Extender
     {
         return appUsers.Select(x => new AppUserVm()
         {
+            Id = x.Id,
             UserName = x.UserName
         });    
     }
