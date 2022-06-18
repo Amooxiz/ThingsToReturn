@@ -8,9 +8,9 @@
 
         @foreach(var category in Model.Categories.Categories)
         {
-            <form class="row g-3 align-items-md-start" method="post" asp-page-handler="select">
+            <form method="post" asp-page-handler="select">
                 <input asp-for="CategoryId"  hidden  value="@category.Id"/>
-                <button class="btn btn-primary" type="submit">@category.Name</button>
+                <button class="button_round" type="submit">@category.Name</button>
             </form>
         }
     </div>
