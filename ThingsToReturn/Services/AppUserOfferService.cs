@@ -23,5 +23,14 @@
             appUserOffer.Offer = offer;
             _appUserOfferRepository.AddFollowOffer(appUserOffer);
         }
+        public AppUserOffer GetFollowOffer(string userId, Offer offer)
+        {
+            return _appUserOfferRepository.GetFollowOffer(userId, offer.Id);
+        }
+        public void RemoveFollowOffer(string userId, Offer offer)
+        {
+            AppUserOffer appUserOffer = this.GetFollowOffer(userId, offer);
+            _appUserOfferRepository.RemoveFollowOffer(appUserOffer);
+        }
     }
 }
