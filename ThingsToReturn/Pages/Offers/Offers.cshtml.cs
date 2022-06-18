@@ -31,7 +31,7 @@ namespace ThingsToReturn.Pages
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            UserId = claim.Value;
+            UserId = claim?.Value;
 
             OfferList = _offerService.GetAllOffers();
             CategoryList = _categoryService.GetAllCategories();
@@ -42,7 +42,7 @@ namespace ThingsToReturn.Pages
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            UserId = claim.Value;
+            UserId = claim?.Value;
 
             CategoryList = _categoryService.GetAllCategories();
             cities = _addressservice.GetAllCities();
