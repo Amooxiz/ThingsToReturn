@@ -127,6 +127,8 @@ img {
 
 
 .button-follow {
+    display: flex;
+    justify-content: end;
     grid-row: 3/4;
     grid-column: 4/5;
     margin: 10px;
