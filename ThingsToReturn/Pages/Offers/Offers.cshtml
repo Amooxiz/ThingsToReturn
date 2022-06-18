@@ -12,6 +12,7 @@
     <div class="col-md-2">
         <label asp-for="FilterChoices.City" class="form-label mt-4">Cities</label>
         <select asp-for="FilterChoices.City" class="form-control">
+            <option></option>
             @foreach(var city in Model.cities)
             {
                 <option value="@city">@city</option>
@@ -22,6 +23,7 @@
    <div class="col-md-2">
         <label asp-for="FilterChoices.CategoryId" class="form-label mt-4">Categories</label>
         <select asp-for="FilterChoices.CategoryId" class="form-control">
+            <option selected></option>
             @foreach(var category in Model.CategoryList.Categories)
             {
                 <option value="@category.Id">@category.Name</option>
@@ -39,8 +41,8 @@
 <div class="grid-offers-container">
     @foreach(var offer in Model.OfferList.Offers)
     {
-        <div class="offers-row-grid-box" style="width: 75%">
-            <div  class="img">
+        <div class="offers-row-grid-box-user" >
+            <div  class="img-user">
                <img src="@offer.ImagePath" />
             </div>
             <div class="row-box-1">
@@ -50,6 +52,9 @@
                 <p >
                    @offer.Description
                 </p>
+            </div>
+            <div class="button-del">
+                <a asp-page="/Offers/Delete" asp-route-id="@offer.Id" class="btn btn-success">Monitor</a>
             </div>
         </div>
     }

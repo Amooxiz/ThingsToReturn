@@ -12,7 +12,7 @@ namespace ThingsToReturn.Pages
         private readonly IOfferService _offerService;
         public Offer Offer { get; set; }
 
-        public DeleteOfferModel(ILogger<DeleteOfferModel> logger, IOfferService offerService)
+        public DeleteOfferModel(IOfferService offerService)
         {
             _offerService = offerService;
         }
@@ -23,7 +23,9 @@ namespace ThingsToReturn.Pages
 
         public IActionResult OnPost()
         {
-            return Page();
+
+            _offerService.RemoveOffer(Offer);
+            return RedirectToPage("/Offers/UsersOffers");
         }
     }
 }

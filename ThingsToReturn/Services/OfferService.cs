@@ -171,5 +171,10 @@ namespace ThingsToReturn.Services
         {
             return _offerRepository.GetOfferToDel(offerId);
         }
+
+        public void RemoveOffer(Offer offer)
+        {
+            _offerRepository.RemoveOffer(offer);
+        }
     }
 }

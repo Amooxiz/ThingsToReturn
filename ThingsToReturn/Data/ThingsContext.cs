@@ -40,7 +40,7 @@ namespace ThingsToReturn.Data
             builder.Entity<OfferCategory>()
             .HasOne<Offer>(pg => pg.Offer)
             .WithMany(p => p.OfferCategories)
-            .HasForeignKey(p => p.OfferId).OnDelete(DeleteBehavior.ClientSetNull);
+            .HasForeignKey(p => p.OfferId).OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<OfferCategory>()
             .HasOne<Category>(pg => pg.Category)

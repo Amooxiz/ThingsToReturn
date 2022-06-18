@@ -50,8 +50,9 @@ img {
 
     height: 100%;
     width: 100%;
+    min-height: 200px;
+    max-height: 300px;
 }
-
 
 .offers-row-grid-box-user {
     margin: 10px;
@@ -64,8 +65,11 @@ img {
 
 .img-user {
     margin: 10px;
+    max-height: 300px;
     grid-row: 1/4;
     grid-column: 1/2;
+    min-height: 200px;
+    max-height: 300px;
 }
 
 .button-del

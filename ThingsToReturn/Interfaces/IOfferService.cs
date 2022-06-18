@@ -6,6 +6,7 @@ namespace ThingsToReturn.Interfaces
     {
         public OfferToListVM GetAllOffers();
         public void AddOffer(Offer offer);
+        public void RemoveOffer(Offer offer);
         public void ReserveOffer(string bookingUserId, int offerId);
         public void CancelReservation(int offerId);
         public OfferToListVM Get20LatestOffers();
