@@ -1,5 +1,5 @@
 ﻿@page
-@model ThingsToReturn.Pages.DeleteOfferModel
+@model ThingsToReturn.Pages.MonitorOfferModel
 @{
 }
 <div class="text-center">
@@ -7,7 +7,7 @@
         <input hidden asp-for="Offer.Id" />
         <div class ="border p-3 mt-4">
             <div class="row pb-2">
-                <h2 class="text-primary pl-3">Delete an announcement</h2> 
+                <h2 class="text-primary pl-3">Monitor an advertisement</h2> 
                 <hr />
             </div>
             <div class="mb-3">
@@ -37,8 +37,8 @@
                 <input asp-for="" disabled class="form-control"/>
             </div>*@
 
-            <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
-            <a asp-page="/Offers/UsersOffers" class="btn btn-secondary" style="width:150px">Back to my ads</a>
+            <button type="submit" class="btn btn-success" style="width:150px">Confirm monitoring</button>
+            <a asp-page="/Offers/Offers" class="btn btn-secondary" style="width:150px">Back to ads</a>
         </div>
     </form>
 </div>

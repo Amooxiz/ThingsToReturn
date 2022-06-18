@@ -7,31 +7,25 @@ namespace ThingsToReturn.Pages
 {
     [BindProperties]
     [Authorize]
-    public class DeleteOfferModel : PageModel
+    public class MonitorOfferModel : PageModel
     {
         private readonly IOfferService _offerService;
         public Offer Offer { get; set; }
 
-        public DeleteOfferModel(IOfferService offerService)
+        public MonitorOfferModel(IOfferService offerService)
         {
             _offerService = offerService;
         }
         public void OnGet(int id)
         {
-            if (id == 0)
-            {
-                Offer = _offerService.GetOfferToDel(id);
-
-            }
+            Offer = _offerService.GetOfferToDel(id);
         }   
 
         public IActionResult OnPost()
         {
-            if(ModelState.IsValid)
-            {
-                _offerService.RemoveOffer(Offer);
-            }
-                return RedirectToPage("/Offers/UsersOffers");
+
+            _offerService.RemoveOffer(Offer);
+            return RedirectToPage("/Offers/UsersOffers");
         }
     }
 }
