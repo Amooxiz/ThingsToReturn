@@ -1,13 +1,13 @@
 ﻿@page
-@model ThingsToReturn.Pages.DeleteOfferModel
+@model ThingsToReturn.Pages.ReserveOfferModel
 @{
 }
 <div class="text-center">
-    <form method="post">
+    <form>
         <input hidden asp-for="Offer.Id" />
         <div class ="border p-3 mt-4">
             <div class="row pb-2">
-                <h2 class="text-primary pl-3">Delete advertisement</h2> 
+                <h2 class="text-primary pl-3">Reserve advertisement</h2> 
                 <hr />
             </div>
             <div class="mb-3">
@@ -36,9 +36,6 @@
                 <label asp-for="" ></label>
                 <input asp-for="" disabled class="form-control"/>
             </div>*@
-
-            <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
-            <a asp-page="/Offers/UsersOffers" class="btn btn-secondary" style="width:150px">Back to my ads</a>
         </div>
     </form>
 </div>

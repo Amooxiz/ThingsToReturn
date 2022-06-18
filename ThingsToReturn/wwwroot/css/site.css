@@ -51,6 +51,7 @@ body {
     grid-column: 2/3;
 }
 
+
 img {
 
     height: 100%;
@@ -82,6 +83,14 @@ img {
     margin: 10px;
     display: flex;
     justify-content: end;
+    grid-row: 3/4;
+    grid-column: 3/4;
+}
+
+.button-reserve {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
     grid-row: 3/4;
     grid-column: 3/4;
 }
