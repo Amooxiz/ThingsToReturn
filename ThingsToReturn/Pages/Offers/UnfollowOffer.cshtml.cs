@@ -28,18 +28,13 @@ namespace ThingsToReturn.Pages
 
         public IActionResult OnPost()
         {
-           /* var offer = _offerService.GetOffer(Offer.Id);
+
+            var offer = _offerService.GetOffer(Offer.Id);
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            if (Offer.Id != 0)
-            {
-                if (_appuserOfferService.IsFollowed(claim.Value, offer))
-                {
-                    TempData["followed"] = "xd";
-                    return RedirectToPage("/Offers/Offers");
-                }
-                _appuserOfferService.AddFollowOffer(claim?.Value, offer);
-            }*/
+
+            _appUserOfferService.RemoveFollowOffer(claim.Value, offer);
+            
 
             return RedirectToPage("/Offers/FollowedOffers");
         }
