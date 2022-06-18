@@ -111,3 +111,8 @@ img {
     .button_round:hover {
         background-color: #00b3b3
     }
+
+
+.user-reserve {
+    display: flex;
+}
