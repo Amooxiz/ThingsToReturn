@@ -22,5 +22,12 @@ namespace ThingsToReturn.Repositories
         {
             return _context.AppUserOffer.Find(userId, offerId);
         }
+        public bool IsFollowed(string userId, int offerId)
+        {
+            if (_context.AppUserOffer.Find(userId, offerId) != null)
+                return true;
+            else
+                return false;
+        }
     }
 }

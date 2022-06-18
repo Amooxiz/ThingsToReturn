@@ -32,5 +32,9 @@
             AppUserOffer appUserOffer = this.GetFollowOffer(userId, offer);
             _appUserOfferRepository.RemoveFollowOffer(appUserOffer);
         }
+        public bool IsFollowed(string userId, Offer offer)
+        {
+            return _appUserOfferRepository.IsFollowed(userId, offer.Id);
+        }
     }
 }
