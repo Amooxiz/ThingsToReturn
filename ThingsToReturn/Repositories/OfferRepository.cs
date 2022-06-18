@@ -92,5 +92,12 @@ namespace ThingsToReturn.Repositories
             _context.Offers.Remove(offer);
             _context.SaveChanges();
         }
+
+        public IQueryable<Offer> GetFollowedOffers(string userId)
+        {
+            return from offers in _context.Offers
+                   where offers.AppUserOffers.Any(c => c.AppUserId == userId)
+                   select offers;
+        }
     }
 }

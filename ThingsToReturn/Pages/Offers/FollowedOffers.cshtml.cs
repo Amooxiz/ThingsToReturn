@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace ThingsToReturn.Pages
 {
@@ -28,12 +29,16 @@ namespace ThingsToReturn.Pages
         }
         public void OnGet()
         {
-
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            OfferList = _offerService.GetFollowedOffers(claims);
         }
 
         public IActionResult OnPostSelect()
         {
-            
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            OfferList = _offerService.GetFollowedOffers(claims);
             return Page();
         }
     }

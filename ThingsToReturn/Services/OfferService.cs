@@ -199,5 +199,28 @@ namespace ThingsToReturn.Services
         {
             _offerRepository.RemoveOffer(offer);
         }
+
+        public OfferToListVM GetFollowedOffers(Claim claim)
+        {
+            var offers = _offerRepository.GetFollowedOffers(claim.Value).ToModel();
+            var offersList = offers.ToList();
+
+            for (int i = 0; i < offersList.Count; i++)
+            {
+
+                var categs = _offerCategoryRepository
+                    .GetCategoriesOfOffer(offersList[i].Id)
+                    .ToModel();
+                offersList[i].CategoryListVM = new CategoryToListVM { Categories = categs.ToList() };
+            }
+
+            OfferToListVM results = new()
+            {
+                Offers = offersList
+            };
+            results.Count = results.Offers.Count;
+
+            return results;
+        }
     }
 }
