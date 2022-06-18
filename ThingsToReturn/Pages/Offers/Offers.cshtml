@@ -65,9 +65,14 @@
                    @offer.Description
                 </p>
             </div>
-            <div class="button-del">
+
+            @if(offer.UserVM.Id != Model.UserId)
+            {
+                
+            <div class="button-follow">
                 <a asp-page="/Offers/ConfirmFollowOffer" asp-route-id="@offer.Id" class="btn btn-success">Follow</a>
             </div>
+            }
         </div>
     }
 </div>

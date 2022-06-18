@@ -47,7 +47,7 @@ public static class Extender
             Description = o.Description,
             ExpirationDate = o.ExpirationDate,
             ImagePath = o.ImagePath,
-            UserVM = new AppUserVm { UserName = o.User.UserName },
+            UserVM = new AppUserVm { UserName = o.User.UserName, Id = o.User.Id},
             CreationDate = o.CreatedDate,
             AddressVM = new AddressVM
             {

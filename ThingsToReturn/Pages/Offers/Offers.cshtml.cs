@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace ThingsToReturn.Pages
 {
@@ -11,6 +12,7 @@ namespace ThingsToReturn.Pages
         private readonly IOfferCategoryService _offercategoryservice;
         private readonly IOfferService _offerService;
         private readonly IAddressService _addressservice;
+        public string UserId { get; private set; }
         public CategoryToListVM CategoryList { get; set; }
         public OfferToListVM OfferList { get; set; }
         public List<string> cities { get; set; }
@@ -27,6 +29,10 @@ namespace ThingsToReturn.Pages
         }
         public void OnGet()
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            UserId = claim.Value;
+
             OfferList = _offerService.GetAllOffers();
             CategoryList = _categoryService.GetAllCategories();
             cities = _addressservice.GetAllCities();
@@ -34,6 +40,10 @@ namespace ThingsToReturn.Pages
 
         public IActionResult OnPostSelect()
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            UserId = claim.Value;
+
             CategoryList = _categoryService.GetAllCategories();
             cities = _addressservice.GetAllCities();
 
