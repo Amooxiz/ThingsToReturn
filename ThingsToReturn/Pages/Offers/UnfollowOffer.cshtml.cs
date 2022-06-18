@@ -36,7 +36,7 @@ namespace ThingsToReturn.Pages
             _appUserOfferService.RemoveFollowOffer(claim.Value, offer);
             
 
-            return RedirectToPage("/Offers/UsersOffers");
+            return RedirectToPage("/Offers/FollowedOffers");
         }
     }
 }
