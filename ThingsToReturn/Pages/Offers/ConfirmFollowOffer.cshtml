@@ -1,5 +1,5 @@
 ﻿@page
-@model ThingsToReturn.Pages.MonitorOfferModel
+@model ThingsToReturn.Pages.ConfirmFollowOfferModel
 @{
 }
 <div class="text-center">
@@ -7,7 +7,7 @@
         <input hidden asp-for="Offer.Id" />
         <div class ="border p-3 mt-4">
             <div class="row pb-2">
-                <h2 class="text-primary pl-3">Monitor an advertisement</h2> 
+                <h2 class="text-primary pl-3">Follow an advertisement</h2> 
                 <hr />
             </div>
             <div class="mb-3">
@@ -37,7 +37,7 @@
                 <input asp-for="" disabled class="form-control"/>
             </div>*@
 
-            <button type="submit" class="btn btn-success" style="width:150px">Confirm monitoring</button>
+            <button type="submit" class="btn btn-success" style="width:150px">Follow</button>
             <a asp-page="/Offers/Offers" class="btn btn-secondary" style="width:150px">Back to ads</a>
         </div>
     </form>

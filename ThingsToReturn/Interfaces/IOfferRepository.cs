@@ -15,7 +15,7 @@
         public IQueryable<Offer> FiltrateOffersByCategoryIdAndCity(int? categoryId, string city);
         public IQueryable<Offer> FiltrateOffersByCity(string city);
         public IQueryable<Offer> FiltrateOffersBySearchTermAndCategoryIdAndCity(string searchTerm, int? categoryId, string city);
-        public Offer GetOfferToDel(int offerId);
+        public Offer GetOffer(int offerId);
         public void RemoveOffer(Offer offer);
         public DateTime GetCreatedDateDownLimit();
         public DateTime GetCreatedDateUpLimit();

@@ -18,20 +18,20 @@ namespace ThingsToReturn.Pages
         }
         public void OnGet(int id)
         {
-            if (id == 0)
+            if (id != 0)
             {
-                Offer = _offerService.GetOfferToDel(id);
+                Offer = _offerService.GetOffer(id);
 
             }
+            
         }   
 
         public IActionResult OnPost()
         {
-            if(ModelState.IsValid)
-            {
+            if(Offer.Id != 0)
                 _offerService.RemoveOffer(Offer);
-            }
-                return RedirectToPage("/Offers/UsersOffers");
+             
+            return RedirectToPage("/Offers/UsersOffers");
         }
     }
 }

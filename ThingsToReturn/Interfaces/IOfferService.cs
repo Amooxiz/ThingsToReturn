@@ -13,7 +13,7 @@ namespace ThingsToReturn.Interfaces
         public OfferToListVM GetUsersOffers(Claim claim);
         public OfferToListVM FiltrateOffers(FilterModel filterModel);
         public OfferToListVM GetOffersByCategoryId(int categoryId);
-        public Offer GetOfferToDel(int offerId);
+        public Offer GetOffer(int offerId);
         public DateTime GetCreatedDateDownLimit();
         public DateTime GetCreatedDateUpLimit();
         public DateTime GetExpirationDateDownLimit();

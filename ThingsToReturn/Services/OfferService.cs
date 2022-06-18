@@ -167,9 +167,9 @@ namespace ThingsToReturn.Services
             return results;
         }
 
-        public Offer GetOfferToDel(int offerId)
+        public Offer GetOffer(int offerId)
         {
-            return _offerRepository.GetOfferToDel(offerId);
+            return _offerRepository.GetOffer(offerId);
         }
 
         public void RemoveOffer(Offer offer)

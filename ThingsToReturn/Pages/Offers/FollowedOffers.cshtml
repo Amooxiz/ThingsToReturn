@@ -1,15 +1,22 @@
 ﻿@page
-@model ThingsToReturn.Pages.UsersOffersModel
+@model ThingsToReturn.Pages.FolloweOffersModel
 @{
 }
 
-<h2 class="card-body">You have @Model.OfferList.Count advertisements</h2>
+
+ 
+<h2 class="card-body">We found @Model.OfferList.Count advertisements</h2>
 <div class="grid-offers-container">
     @foreach(var offer in Model.OfferList.Offers)
     {
         <div class="offers-row-grid-box-user" >
             <div  class="img-user">
                <img src="@offer.ImagePath" />
+            </div>
+            <div  class="loc-div ">
+                <p class="card-body">
+                    @offer.AddressVM.City
+                </p>
             </div>
             <div class="row-box-1">
                <h6 class="card-header"> @(offer.Name)</h6>
@@ -20,7 +27,7 @@
                 </p>
             </div>
             <div class="button-del">
-                <a asp-page="/Offers/MonitorOffer" asp-route-id="@offer.Id" class="btn btn-primary">Delete</a>
+                <a asp-page="/Offers/ConfirmFollowOffer" asp-route-id="@offer.Id" class="btn btn-success">Follow</a>
             </div>
         </div>
     }

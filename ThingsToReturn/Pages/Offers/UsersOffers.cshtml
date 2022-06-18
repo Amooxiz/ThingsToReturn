@@ -11,6 +11,11 @@
             <div  class="img-user">
                <img src="@offer.ImagePath" />
             </div>
+            <div  class="loc-div ">
+                <p class="card-body">
+                    @offer.AddressVM.City
+                </p>
+            </div>
             <div class="row-box-1">
                <h6 class="card-header"> @(offer.Name)</h6>
             </div>
@@ -20,7 +25,7 @@
                 </p>
             </div>
             <div class="button-del">
-                <a asp-page="/Offers/MonitorOffer" asp-route-id="@offer.Id" class="btn btn-primary">Delete</a>
+                <a asp-page="/Offers/Delete" asp-route-id="@offer.Id" class="btn btn-primary">Delete</a>
             </div>
         </div>
     }

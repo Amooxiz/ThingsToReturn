@@ -78,7 +78,7 @@ namespace ThingsToReturn.Repositories
             return _context.Offers.Where(x => x.User.Id == userId);
         }
 
-        public Offer GetOfferToDel(int offerId)
+        public Offer GetOffer(int offerId)
         {
             return _context.Offers.Find(offerId);
         }
