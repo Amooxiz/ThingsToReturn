@@ -41,7 +41,7 @@ namespace ThingsToReturn.Pages
                 _appuserOfferService.AddFollowOffer(claim?.Value, offer);
             }*/
 
-            return RedirectToPage("/Offers/UsersOffers");
+            return RedirectToPage("/Offers/FollowedOffers");
         }
     }
 }
