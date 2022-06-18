@@ -7,6 +7,7 @@
         public IQueryable<Offer> Get20LatestOffers();
         public IQueryable<Offer> GetAllOffers();
         public IQueryable<Offer> GetUsersOffers(string userId);
+        public IQueryable<Offer> GetNotUsersOffers(string userId);
         public void AddOffer(Offer offer);
         public IQueryable<Offer> FiltrateOffersBySearchTerm(string searchTerm);
         public IQueryable<Offer> FiltrateOffersByCategoryId(int? categoryId);
