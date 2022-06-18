@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ThingsToReturn.Pages
 {
     [BindProperties]
+    [Authorize]
     public class FolloweOffersModel : PageModel
     {
         private readonly ILogger<FolloweOffersModel> _logger;

@@ -7,12 +7,12 @@ namespace ThingsToReturn.Pages
 {
     [BindProperties]
     [Authorize]
-    public class ConfirmFollowOfferModel : PageModel
+    public class ReserveOfferModel : PageModel
     {
         private readonly IOfferService _offerService;
         public Offer Offer { get; set; }
 
-        public ConfirmFollowOfferModel(IOfferService offerService)
+        public ReserveOfferModel(IOfferService offerService)
         {
             _offerService = offerService;
         }
@@ -21,16 +21,16 @@ namespace ThingsToReturn.Pages
             if (id != 0)
             {
                 Offer = _offerService.GetOffer(id);
+
             }
+            
         }   
 
         public IActionResult OnPost()
         {
-            if (Offer.Id != 0)
-            {
-                Offer = _offerService.GetOffer(id);
-            }
-
+            if(Offer.Id != 0)
+                _offerService.RemoveOffer(Offer);
+             
             return RedirectToPage("/Offers/UsersOffers");
         }
     }

@@ -7,12 +7,12 @@ namespace ThingsToReturn.Pages
 {
     [BindProperties]
     [Authorize]
-    public class ConfirmFollowOfferModel : PageModel
+    public class UnfollowOfferModel : PageModel
     {
         private readonly IOfferService _offerService;
         public Offer Offer { get; set; }
 
-        public ConfirmFollowOfferModel(IOfferService offerService)
+        public UnfollowOfferModel(IOfferService offerService)
         {
             _offerService = offerService;
         }
@@ -26,12 +26,8 @@ namespace ThingsToReturn.Pages
 
         public IActionResult OnPost()
         {
-            if (Offer.Id != 0)
-            {
-                Offer = _offerService.GetOffer(id);
-            }
 
-            return RedirectToPage("/Offers/UsersOffers");
+                return RedirectToPage("/Offers/UsersOffers");
         }
     }
 }
