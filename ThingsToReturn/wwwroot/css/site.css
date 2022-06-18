@@ -65,7 +65,7 @@ img {
     display: grid;
     background-color: white;
     grid-template-rows: 1fr 2fr 60px;
-    grid-template-columns: 250px 1fr 1fr 1fr;
+    grid-template-columns: 250px 1fr 1fr 1fr 50px;
     max-height: 300px;
 }
 
@@ -130,4 +130,10 @@ img {
     grid-row: 3/4;
     grid-column: 4/5;
     margin: 10px;
+}
+
+.icon-container {
+    margin: 10px;
+    grid-row: 1/2;
+    grid-column: 5/6;
 }
