@@ -80,6 +80,7 @@ img {
 
 .button-del
 {
+
     margin: 10px;
     display: flex;
     justify-content: end;
@@ -118,8 +119,9 @@ img {
     margin: 10px;
 }
 
-.button-manage
-{
+.button-manage {
+    display: flex;
+    justify-content: end;
     grid-row: 3/4;
     grid-column: 4/5;
     margin: 10px;

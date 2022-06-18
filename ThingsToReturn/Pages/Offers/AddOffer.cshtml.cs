@@ -39,6 +39,7 @@ namespace ThingsToReturn.Pages
 
         public IActionResult OnPost()
         {
+
             CategoryList = _categoryService.GetAllCategories();
 
             var dir = Directory.GetCurrentDirectory();
@@ -66,7 +67,7 @@ namespace ThingsToReturn.Pages
             ImageFile.CopyTo(fileStream);
             fileStream.Dispose();
 
-            return Page();
+            return RedirectToPage("/Offers/Offers");
         }
     }
 }
