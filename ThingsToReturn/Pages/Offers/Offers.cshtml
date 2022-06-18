@@ -1,6 +1,13 @@
 ﻿@page
 @model ThingsToReturn.Pages.OffersModel
-@{
+@if(TempData["followed"] is not null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>  
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.error('You follow this offer already');
+    </script> 
+
 }
 
 
@@ -16,7 +23,7 @@
             @foreach(var city in Model.cities)
             {
                 <option value="@city">@city</option>
-            }
+            }    
         </select>
         <span asp-validation-for="FilterChoices.City" class="text-danger"></span>
     </div>
@@ -64,3 +71,4 @@
         </div>
     }
 </div>
+
