@@ -77,15 +77,15 @@ namespace ThingsToReturn.Services
         public OfferToListVM FiltrateOffers(FilterModel filterModel)
         {
             IQueryable<OfferVM> offers;
-            if (filterModel.CategoryId == 0 && String.IsNullOrEmpty(filterModel.City) && String.IsNullOrEmpty(filterModel.Name))
+            if (filterModel.CategoryId == null && String.IsNullOrEmpty(filterModel.City) && String.IsNullOrEmpty(filterModel.Name))
                 offers = _offerRepository.GetAllOffers().ToModel();
-            else if (filterModel.CategoryId == 0 && String.IsNullOrEmpty(filterModel.City))
+            else if (filterModel.CategoryId == null && String.IsNullOrEmpty(filterModel.City))
                 offers = _offerRepository.FiltrateOffersBySearchTerm(filterModel.Name).ToModel();
-            else if (filterModel.CategoryId == 0 && String.IsNullOrEmpty(filterModel.Name))
+            else if (filterModel.CategoryId == null && String.IsNullOrEmpty(filterModel.Name))
                 offers = _offerRepository.FiltrateOffersByCity(filterModel.City).ToModel();
             else if (String.IsNullOrEmpty(filterModel.City) && String.IsNullOrEmpty(filterModel.Name))
                 offers = _offerRepository.FiltrateOffersByCategoryId(filterModel.CategoryId).ToModel();
-            else if (filterModel.CategoryId == 0)
+            else if (filterModel.CategoryId == null)
                 offers = _offerRepository.FiltrateOffersBySearchTermAndCity(filterModel.Name, filterModel.City).ToModel();
             else if (String.IsNullOrEmpty(filterModel.Name))
                 offers = _offerRepository.FiltrateOffersByCategoryIdAndCity(filterModel.CategoryId, filterModel.City).ToModel();
