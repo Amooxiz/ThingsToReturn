@@ -38,8 +38,7 @@ namespace ThingsToReturn.Pages
         {
             CategoryList = _categoryService.GetAllCategories();
             cities = _addressservice.GetAllCities();
-
-                OfferList = _offerService.FiltrateOffers(FilterChoices);
+             OfferList = _offerService.FiltrateOffers(FilterChoices);
             return Page();
         }
     }
