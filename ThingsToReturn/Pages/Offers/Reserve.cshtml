@@ -39,3 +39,36 @@
         </div>
     </form>
 </div>
+    <hr/>
+    @if(Model.Offer?.BookingId is not null)
+    {
+        <form method="post" asp-page-handler="Cancel" >
+            <div class="user-reserve">
+                 <input name="offerId" hidden class="form-control" value="@Model.Offer.Id" />
+                 <div class="card-header" style="width: 75%">You already reservated your offer for @Model.Offer.BookingId</div>
+                
+                 <div style="margin-left: 10px">
+                    <button type="submit" class="btn btn-danger">Cancel reservation</button>
+                </div>
+            </div>
+        </form>
+
+    }
+    else
+    {
+        @foreach(var interested in Model.InterestedUsers.AppUsers)
+        {
+            <form method="post" asp-page-handler="Reserve" >
+               <div class="user-reserve">
+                    <div class="" style="width: 75%">
+                        <input asp-for="Reservation.OfferId" hidden  class="form-control" value="@Model.Offer.Id" />
+                        <input asp-for="Reservation.UserId" hidden  class="form-control" value="@interested.Id" />
+                        <input asp-for="Reservation.UserName" disabled name="userName" class="form-control mb-2" value="@interested.UserName"/>
+                    </div>
+                    <div style="margin-left: 10px">
+                        <button type="submit" class="btn btn-info">Reserve</button>
+                    </div>
+               </div>
+            </form>
+        }
+    }

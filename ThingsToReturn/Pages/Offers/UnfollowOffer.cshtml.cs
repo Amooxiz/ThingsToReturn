@@ -10,11 +10,13 @@ namespace ThingsToReturn.Pages
     public class UnfollowOfferModel : PageModel
     {
         private readonly IOfferService _offerService;
+        private readonly IAppUserOfferService _appUserOfferService;
         public Offer Offer { get; set; }
 
-        public UnfollowOfferModel(IOfferService offerService)
+        public UnfollowOfferModel(IOfferService offerService, IAppUserOfferService appUserOfferService)
         {
             _offerService = offerService;
+            _appUserOfferService = appUserOfferService;
         }
         public void OnGet(int id)
         {
@@ -26,8 +28,20 @@ namespace ThingsToReturn.Pages
 
         public IActionResult OnPost()
         {
+           /* var offer = _offerService.GetOffer(Offer.Id);
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            if (Offer.Id != 0)
+            {
+                if (_appuserOfferService.IsFollowed(claim.Value, offer))
+                {
+                    TempData["followed"] = "xd";
+                    return RedirectToPage("/Offers/Offers");
+                }
+                _appuserOfferService.AddFollowOffer(claim?.Value, offer);
+            }*/
 
-                return RedirectToPage("/Offers/UsersOffers");
+            return RedirectToPage("/Offers/UsersOffers");
         }
     }
 }

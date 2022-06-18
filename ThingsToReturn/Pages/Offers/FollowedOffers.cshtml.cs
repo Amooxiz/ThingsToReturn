@@ -13,10 +13,9 @@ namespace ThingsToReturn.Pages
         private readonly IOfferCategoryService _offercategoryservice;
         private readonly IOfferService _offerService;
         private readonly IAddressService _addressservice;
-        public CategoryToListVM CategoryList { get; set; }
+     
         public OfferToListVM OfferList { get; set; }
-        public List<string> cities { get; set; }
-        public FilterModel FilterChoices { get; set; }
+      
 
         public FolloweOffersModel(ILogger<FolloweOffersModel> logger, ICategoryService categoryService,
             IOfferCategoryService offercategoryservice, IOfferService offerService, IAddressService addressService)
@@ -29,16 +28,12 @@ namespace ThingsToReturn.Pages
         }
         public void OnGet()
         {
-            OfferList = _offerService.GetAllOffers();
-            CategoryList = _categoryService.GetAllCategories();
-            cities = _addressservice.GetAllCities();
+
         }
 
         public IActionResult OnPostSelect()
         {
-            CategoryList = _categoryService.GetAllCategories();
-            cities = _addressservice.GetAllCities();
-             OfferList = _offerService.FiltrateOffers(FilterChoices);
+            
             return Page();
         }
     }

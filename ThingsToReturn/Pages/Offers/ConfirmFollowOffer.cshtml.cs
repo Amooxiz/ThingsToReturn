@@ -34,6 +34,11 @@ namespace ThingsToReturn.Pages
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             if (Offer.Id != 0)
             {
+                if(_appuserOfferService.IsFollowed(claim.Value, offer))
+                {
+                    TempData["followed"] = "You already follow this ad";
+                    return RedirectToPage("/Offers/Offers");
+                }
                 _appuserOfferService.AddFollowOffer(claim?.Value, offer);
             }
 
