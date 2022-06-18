@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Categories" class="form-label mt-4">Categories (up to 3)</label>
+        <label asp-for="Categories" class="form-label mt-4">Categories</label>
         <select asp-for="Categories" multiple class="form-control" id="" size="3">
             @foreach(var category in Model.CategoryList.Categories)
             {

@@ -31,7 +31,7 @@ namespace ThingsToReturn.Data
             builder.Entity<AppUserOffer>()
             .HasOne<Offer>(pg => pg.Offer)
             .WithMany(g => g.AppUserOffers)
-            .HasForeignKey(g => g.OfferId).OnDelete(DeleteBehavior.ClientSetNull);
+            .HasForeignKey(g => g.OfferId).OnDelete(DeleteBehavior.Cascade);
 
             // Tabela łącząca kategorie z ofertami
             builder.Entity<OfferCategory>()
