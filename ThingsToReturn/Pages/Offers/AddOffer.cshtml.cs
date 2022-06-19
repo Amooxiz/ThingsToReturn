@@ -37,38 +37,6 @@ namespace ThingsToReturn.Pages
 
         }
 
-        //public IActionResult OnPost()
-        //{
-
-        //    CategoryList = _categoryService.GetAllCategories();
-
-        //    var dir = Directory.GetCurrentDirectory();
-
-        //    //Tu rzeczy zwiazane ze zdj
-        //    var filename = ImageFile.FileName;
-        //    string filePathForDatabase = "/Images/" + filename;
-        //    string filePath = dir +"\\wwwroot" + "\\Images\\" + filename;
-
-        //    var claimsIdentity = (ClaimsIdentity)User.Identity;
-        //    var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-
-        //    //Trzeba to pododawac adres do ofert i tam inne wymagan
-        //    Offer.ImagePath = filePathForDatabase;
-        //    Offer.CreatedDate = DateTime.Now;
-        //    Offer.Address = Address;
-        //    Offer.User = _appUserService.GetUser(claim.Value);
-
-        //    var categories = _categoryService.GetCategoriesByIdList(Categories);
-        //    _offercategoryservice.AddOffersWithCategories(Offer, categories);
-
-
-        //    //Zapis zdjeica
-        //    Stream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite);
-        //    ImageFile.CopyTo(fileStream);
-        //    fileStream.Dispose();
-
-        //    return RedirectToPage("/Offers/Offers");
-        //}
         public IActionResult OnPost()
         {
 
